@@ -50,9 +50,9 @@ const listaProd = [
     {nombre: 'Rouge Rosa Eighties', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2000, cod: 16},
     {nombre: 'Rouge Rosa Suave', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2100, cod: 17},
     {nombre: 'Shampoo + Acondicionador 175ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 900, cod: 18},
-    {nombre: 'Shampoo anticaspa 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 650, cod: 19},
-    {nombre: 'Crema de enjuague 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1550, cod: 20},
-    {nombre: 'Aceite masajeador capilar 75ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1100, cod: 21},
+    {nombre: 'Shampoo Anticaspa 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 650, cod: 19},
+    {nombre: 'Crema de Enjuague 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1550, cod: 20},
+    {nombre: 'Aceite Masajeador Capilar 75ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1100, cod: 21},
 ];
 
 //Array zonas de envío
