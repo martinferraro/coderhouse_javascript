@@ -1,0 +1,31 @@
+/* CSS RESET */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* GENERAL */
+header {
+    background-color: #c8dbe6;
+}
+h2 {
+    color: #465964;
+}
+
+main > div > p {
+    color: #465964;
+}
+
+.tarjProd {
+    border-color: #a763a7;
+
+/*     &:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    } */
+}
+
+.btn {
+    background-color: #a763a7;
+    color: white;
+}
