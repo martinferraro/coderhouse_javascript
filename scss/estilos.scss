@@ -8,8 +8,13 @@
 header {
     background-color: #c8dbe6;
 }
+
 h2 {
     color: #465964;
+}
+
+p {
+    font-size: .9rem;
 }
 
 main > div > p {
@@ -18,11 +23,6 @@ main > div > p {
 
 .tarjProd {
     border-color: #a763a7;
-
-/*     &:hover {
-        transform: scale(1.02);
-        cursor: pointer;
-    } */
 }
 
 .btn {
@@ -31,10 +31,20 @@ main > div > p {
     border: 0!important
 }
 
-.bi-check-circle-fill {
+.btnAdd {
+    background-color: #206331;
+    color: white;
+}
+
+.btnRemover {
+    background-color: #949494;
+    color: white;
+}
+
+/* .bi-check-circle-fill {
     color: green;
     font-size: 2rem;
     position: absolute;
     top: -.1rem;
     right: .5rem;
-}
+} */

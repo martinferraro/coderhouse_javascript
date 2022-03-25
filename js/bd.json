@@ -137,14 +137,14 @@
         "nombre":"Protector Solar FPS20 175ml",
         "descripcion":"Descripción",
         "categoria":"Protectores solares",
-        "precioUn":1750,
+        "precioUn":1350,
         "cod":20
     },
     {
         "nombre":"Protector Solar - Pantalla FPS60 175ml",
         "descripcion":"Descripción",
         "categoria":"Protectores solares",
-        "precioUn":1750,
+        "precioUn":2100,
         "cod":21
     }
 ],
