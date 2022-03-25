@@ -1,7 +1,8 @@
 const productos = document.getElementById('producto');
 const tarjetaProducto = document.getElementById('tarjetaProducto').content; //Template para cada tarjeta de los productos
-const tabla = document.getElementById("listaCarrito");
-const vacTabla = document.getElementById('btnTabla');
+const tabla = document.getElementById('tabla');
+const checkout = document.getElementById('checkout');
+const vacCarro = document.getElementById('btnTabla');
 const fragment = document.createDocumentFragment(); //Nodo offscreen para ir cargando las tarjetas
 let listaFiltro = {};
 
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarJSON();
 });
 
+//Traigo la base de datos desde JSON
 async function cargarJSON() {
     fetch('./js/bd.json')
         .then(function(res) {
@@ -34,12 +36,20 @@ productos.addEventListener('click', e => {
     } else if (e.target.classList.contains('btnRemover')) {
         removerProductoDeLista(e.target.parentElement.parentElement);
     };
+    vaciarTabla();
     armarTabla();
 });
 
+//Acción cuando hacen click en botón "Checkout"
+checkout.addEventListener('click', e => {
+    alert('En breve este botón estará funcional.')
+});
+
 //Acción cuando hacen click en botón "Vaciar lista"
-vacTabla.addEventListener('click', e => {
-    vaciarTabla();
+vacCarro.addEventListener('click', e => {
+    if (confirm('¿Está seguro de que desea vaciar el carrito?\nSu compra no estará disponible si ingresa nuevamente al sitio.')) {
+        vaciarCarro();
+    }
 });
 
 //Muestra todos los productos del catálogo, llamando a las tarjetas en pantalla.
@@ -58,7 +68,7 @@ function seleccionCat(e) {
     }
 }
 
-//Esta función elimina los children del div id="producto", para reemplazarlos después con el nuevo filtro.
+//Esta función elimina los children del div id="producto", para reemplazarlos después con el nuevo filtro
 function vaciarTarjetero() {
     while (productos.firstChild) {
         productos.removeChild(productos.firstChild);
@@ -104,12 +114,12 @@ function sumarProductoALista(e) {
 
 //Función para remover productos cuando el usuario cliquea en "remover"
 function removerProductoDeLista(e) {
-    var nomItem = e.querySelector('.nombreProducto').textContent; //Levanto el nombre del producto
+    var nomItem = e.querySelector('.nombreProducto').textContent; //Levanto el nombre del producto a partir del nodo
     var indice = arrayCarro.findIndex(ProductoSel => ProductoSel.nombreEl === nomItem); //Comparo con el array
     if (indice != -1) { //Ignora los productos que no estén en el arrayCarro
         arrayCarro.splice(indice, 1); //Remuevo si hay coincidencia
         localStorage.clear(); //Limpio el storage anterior
-        localStorage.setItem('carro', JSON.stringify(arrayCarro));
+        localStorage.setItem('carro', JSON.stringify(arrayCarro)); //Actualizo el storage
         precioProductosCarro(); //Actualizo la sumatoria de los precios
     }
 }
@@ -121,22 +131,30 @@ function precioProductosCarro() {
     document.getElementById('sumaProd').innerHTML = ('$' + precioTot);
 }
 
+//Armo la tabla a partir del array que levanto del local storage
 function armarTabla(e) {
     let carroLS = localStorage.getItem('carro'); //Llamo al carro desde el local storage
     let carro = JSON.parse(carroLS); //Parseo el string con el array de los productos seleccionados
-    //ARMAR TABLA A PARTIR DE ARRAY!!!!!!!!!!!!!!!!!!!!!!!!!!
-    /* var fila = `<tr>
-                    <td>${e.querySelector('.nombreProducto').textContent}</td>
-                    <td class="text-center">${1}</td>
-                    <td class="text-end">${'$' + e.querySelector('.importe').textContent}</td>
-                <tr>`
-    tabla.innerHTML += fila */
+    for(var i = 0; i < carro.length; i++) {
+        var fila = `<tr>
+                        <td>${carro[i].nombreEl}</td>
+                        <td class="text-center">${carro[i].cantidadEl}</td> 
+                        <td class="text-end">$${carro[i].precioUnEl}</td>
+                    </tr>`;
+        tabla.innerHTML += fila
+    }
 };
 
+//"Vaciar tabla" lo uso para reiniciar lo que muestra la tabla, sin resetear el local storage (para que no se me multipliquen los items de la tabla indefinidamente)
 function vaciarTabla() {
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild);
     }
+}
+
+//Si el usuario quiere borrar toda la compra, incluso del local storage
+function vaciarCarro() {
+    vaciarTabla();
     arrayCarro.length = 0;
     localStorage.clear(); //Vació el local storage (elimino carrito)
     precioTot = '';
