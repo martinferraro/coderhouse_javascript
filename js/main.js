@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Traigo la base de datos desde JSON
 async function cargarJSON() {
-    fetch('/js/bd.json')
+    fetch('./js/bd.json')
         .then(function(res) {
             return res.json();
         })
