@@ -1,0 +1,174 @@
+{
+    "listaProd": [
+    {
+        "nombre":"Crema Facial Uso Diario 275ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados de la piel",
+        "precioUn":3200,
+        "cod":1
+    },
+    {
+        "nombre":"Crema Facial Uso Diario 125ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados de la piel",
+        "precioUn":2200,
+        "cod":2
+    },
+    {
+        "nombre":"Crema Facial Rejuvenecedora 125ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados de la piel",
+        "precioUn":2900,
+        "cod":3
+    },
+    {
+        "nombre":"Crema Corporal Hidratante 320ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados de la piel",
+        "precioUn":2800,
+        "cod":4
+    },
+    {
+        "nombre":"Crema Corporal Urea 275ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados de la piel",
+        "precioUn":3100,
+        "cod":5
+    },
+    {
+        "nombre":"Base Maquillaje 35g",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":1250,
+        "cod":6
+    },
+    {
+        "nombre":"Base Maquillaje 60g",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2000,
+        "cod":7
+    },
+    {
+        "nombre":"Rimmel Profesional 80cc",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2750,
+        "cod":8
+    },
+    {
+        "nombre":"Rimmel Profesional 40cc",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":1900,
+        "cod":9
+    },
+    {
+        "nombre":"Rouge Rojo Pasión",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2100,
+        "cod":10
+    },
+    {
+        "nombre":"Rouge Verde Esmeralda",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2100,
+        "cod":11
+    },
+    {
+        "nombre":"Rouge Rojo Carmesí",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2250,
+        "cod":12
+    },
+    {
+        "nombre":"Rouge Rosa Eighties",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2000,
+        "cod":13
+    },
+    {
+        "nombre":"Rouge Rosa Suave",
+        "descripcion":"Descripción",
+        "categoria":"Maquillaje",
+        "precioUn":2100,
+        "cod":14
+    },
+    {
+        "nombre":"Shampoo + Acondicionador 175ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados del cabello",
+        "precioUn":900,
+        "cod":15
+    },
+    {
+        "nombre":"Shampoo Anticaspa 220ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados del cabello",
+        "precioUn":650,
+        "cod":16
+    },
+    {
+        "nombre":"Crema de Enjuague 220ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados del cabello",
+        "precioUn":1550,
+        "cod":17
+    },
+    {
+        "nombre":"Aceite Masajeador Capilar 75ml",
+        "descripcion":"Descripción",
+        "categoria":"Cuidados del cabello",
+        "precioUn":1100,
+        "cod":18
+    },
+    {
+        "nombre":"Protector Solar FPS30 175ml",
+        "descripcion":"Descripción",
+        "categoria":"Protectores solares",
+        "precioUn":1750,
+        "cod":19
+    },
+    {
+        "nombre":"Protector Solar FPS20 175ml",
+        "descripcion":"Descripción",
+        "categoria":"Protectores solares",
+        "precioUn":1750,
+        "cod":20
+    },
+    {
+        "nombre":"Protector Solar - Pantalla FPS60 175ml",
+        "descripcion":"Descripción",
+        "categoria":"Protectores solares",
+        "precioUn":1750,
+        "cod":21
+    }
+],
+
+    "envios": [
+    {
+        "zona": "CABA",
+        "costoEnv": 250
+    },
+    {
+        "zona": "GBA Norte",
+        "costoEnv": 400
+    },
+    {
+        "zona": "GBA Sur",
+        "costoEnv": 600
+    },
+    {
+        "zona": "GBA Oeste",
+        "costoEnv": 500
+    },
+    {
+        "zona": "Resto del país",
+        "costoEnv": 1500
+    }
+]
+}

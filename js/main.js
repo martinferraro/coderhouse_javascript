@@ -1,28 +1,40 @@
 const productos = document.getElementById('producto');
-//Template para cada tarjeta de los productos
-const tarjetaProducto = document.getElementById('tarjetaProducto').content;
-const vacTabla = document.getElementById('btnTabla');
-//Nodo offscreen para ir cargando las tarjetas
-const fragment = document.createDocumentFragment();
+const tarjetaProducto = document.getElementById('tarjetaProducto').content; //Template para cada tarjeta de los productos
 const tabla = document.getElementById("listaCarrito");
-
+const vacTabla = document.getElementById('btnTabla');
+const fragment = document.createDocumentFragment(); //Nodo offscreen para ir cargando las tarjetas
 let listaFiltro = {};
-let listaCompra = {}; //Para volcar selecciones a tabla
 
-//Catalogo completo en el inicio
-window.onload = seleccionTodo;
+//Bases de datos desde archivo json
+document.addEventListener('DOMContentLoaded', () => {
+    cargarJSON();
+});
+
+async function cargarJSON() {
+    fetch('/js/bd.json')
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(baseDatos) {
+            listaProd = baseDatos.listaProd;
+            envios = baseDatos.envios;
+            seleccionTodo()
+        });
+}
 
 //Acción cuando seleccionan categoría de productos en dropdown
 dropCategoria.addEventListener('change', () => {
     seleccionCat(dropCategoria.value);
 });
 
-//Acción cuando hacen click en botón "Agregar a compra"
+//Acción cuando hacen click en botón "Agregar"
 productos.addEventListener('click', e => {
-    if (e.target.classList.contains('btn')) {
-        sumarProductoALista(e.target.parentElement);
-        armarTabla(e.target.parentElement);
-    }
+    if (e.target.classList.contains('btnAdd')) {
+        sumarProductoALista(e.target.parentElement.parentElement);
+    } else if (e.target.classList.contains('btnRemover')) {
+        removerProductoDeLista(e.target.parentElement.parentElement);
+    };
+    armarTabla();
 });
 
 //Acción cuando hacen click en botón "Vaciar lista"
@@ -30,43 +42,9 @@ vacTabla.addEventListener('click', e => {
     vaciarTabla();
 });
 
-//Array productos
-const listaProd = [
-    {nombre: 'Crema Facial Uso Diario 275ml', descripcion: 'Descripción', categoria: 'Cuidados de la piel', precioUn: 3200, cod: 1},
-    {nombre: 'Crema Facial Uso Diario 125ml', descripcion: 'Descripción', categoria: 'Cuidados de la piel', precioUn: 2200, cod: 2},
-    {nombre: 'Crema Facial Rejuvenecedora 125ml', descripcion: 'Descripción', categoria: 'Cuidados de la piel', precioUn: 2900, cod: 3},
-    {nombre: 'Crema Corporal Hidratante 320ml', descripcion: 'Descripción', categoria: 'Cuidados de la piel', precioUn: 2800, cod: 4},
-    {nombre: 'Crema Corporal Urea 275ml', descripcion: 'Descripción', categoria: 'Cuidados de la piel', precioUn: 3100, cod: 5},
-    {nombre: 'Protector Solar FPS30 175ml', descripcion: 'Descripción', categoria: 'Protectores solares', precioUn: 1750, cod: 6},
-    {nombre: 'Protector Solar FPS20 175ml', descripcion: 'Descripción', categoria: 'Protectores solares', precioUn: 1750, cod: 7},
-    {nombre: 'Protector Solar - Pantalla FPS60 175ml', descripcion: 'Descripción', categoria: 'Protectores solares', precioUn: 1750, cod: 8},
-    {nombre: 'Base Maquillaje 35g', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 1250, cod: 9},
-    {nombre: 'Base Maquillaje 60g', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2000, cod: 10},
-    {nombre: 'Rimmel Profesional 80cc', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2750, cod: 11},
-    {nombre: 'Rimmel Profesional 40cc', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 1900, cod: 12},
-    {nombre: 'Rouge Rojo Pasión', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2100, cod: 13},
-    {nombre: 'Rouge Verde Esmeralda', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2100, cod: 14},
-    {nombre: 'Rouge Rojo Carmesí', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2250, cod: 15},
-    {nombre: 'Rouge Rosa Eighties', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2000, cod: 16},
-    {nombre: 'Rouge Rosa Suave', descripcion: 'Descripción', categoria: 'Maquillaje', precioUn: 2100, cod: 17},
-    {nombre: 'Shampoo + Acondicionador 175ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 900, cod: 18},
-    {nombre: 'Shampoo Anticaspa 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 650, cod: 19},
-    {nombre: 'Crema de Enjuague 220ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1550, cod: 20},
-    {nombre: 'Aceite Masajeador Capilar 75ml', descripcion: 'Descripción', categoria: 'Cuidados del cabello', precioUn: 1100, cod: 21},
-];
-
-//Array zonas de envío
-const envios = [
-    {nombre: 'CABA', envio: 250},
-    {nombre: 'GBA Norte', envio: 400},
-    {nombre: 'GBA Sur', envio: 600},
-    {nombre: 'GBA Oeste', envio: 500},
-    {nombre: 'Resto del país', envio: 1500}
-];
-
 //Muestra todos los productos del catálogo, llamando a las tarjetas en pantalla.
 function seleccionTodo() {
-    listaFiltro = listaProd;
+    listaFiltro = listaProd
     tarjetasEnPantalla();
 }
 
@@ -120,24 +98,39 @@ function sumarProductoALista(e) {
     cantidadEl = 1 //Ver cómo sumo 1 con cada click, unificando producto
     var precioUnEl = e.querySelector('.importe').textContent;
     arrayCarro.push(new ProductoSel(nombreEl, cantidadEl, precioUnEl));
-    //Llamo a la función para sumar los importes de todos los productos
-    precioProductosCarro();
-    //Display del total productos en HTML
-    document.getElementById('sumaProd').innerHTML = ('$' + precioTot);
+    localStorage.setItem('carro', JSON.stringify(arrayCarro)); //Envio el carro a local storage para levantarlo en checkout
+    precioProductosCarro(); //Llamo a la función para sumar los importes de todos los productos
+}
+
+//Función para remover productos cuando el usuario cliquea en "remover"
+function removerProductoDeLista(e) {
+    var nomItem = e.querySelector('.nombreProducto').textContent; //Levanto el nombre del producto
+    var indice = arrayCarro.findIndex(ProductoSel => ProductoSel.nombreEl === nomItem); //Comparo con el array
+    if (indice != -1) { //Ignora los productos que no estén en el arrayCarro
+        arrayCarro.splice(indice, 1); //Remuevo si hay coincidencia
+        localStorage.clear(); //Limpio el storage anterior
+        localStorage.setItem('carro', JSON.stringify(arrayCarro));
+        precioProductosCarro(); //Actualizo la sumatoria de los precios
+    }
 }
 
 //Precio total del carrito: Sumo el subtotal de los distintos productos entre sí
 function precioProductosCarro() {
-    return precioTot = arrayCarro.reduce((acc, val) => acc + val.precioUnEl,0);
+    precioTot = arrayCarro.reduce((acc, val) => acc + val.precioUnEl, 0);
+    //Display del precio total de los productos en HTML
+    document.getElementById('sumaProd').innerHTML = ('$' + precioTot);
 }
 
 function armarTabla(e) {
-    var fila = `<tr>
+    let carroLS = localStorage.getItem('carro'); //Llamo al carro desde el local storage
+    let carro = JSON.parse(carroLS); //Parseo el string con el array de los productos seleccionados
+    //ARMAR TABLA A PARTIR DE ARRAY!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /* var fila = `<tr>
                     <td>${e.querySelector('.nombreProducto').textContent}</td>
                     <td class="text-center">${1}</td>
                     <td class="text-end">${'$' + e.querySelector('.importe').textContent}</td>
                 <tr>`
-    tabla.innerHTML += fila
+    tabla.innerHTML += fila */
 };
 
 function vaciarTabla() {
@@ -145,6 +138,7 @@ function vaciarTabla() {
         tabla.removeChild(tabla.firstChild);
     }
     arrayCarro.length = 0;
+    localStorage.clear(); //Vació el local storage (elimino carrito)
     precioTot = '';
     document.getElementById('sumaProd').innerHTML = (precioTot);
 }
