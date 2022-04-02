@@ -61,25 +61,13 @@ productos.addEventListener('click', e => {
 
 //Acción cuando hacen click en botón "Checkout"
 checkout.addEventListener('click', e => {
-    if (precioTot > 10000) {
-        promocion();
-        Swal.fire({
-            text: 'Accediste a la promoción! Agregamos un producto gratis a tu carrito (Igual todavía no desarrollé la página de checkout)',
+    Swal.fire({
+            text: 'En breve este botón estará funcional. Probá sumando más de $10.000 para acceder a la promo!',
             icon: 'info',
             showConfirmButton: false,
-            timer: 4000,
+            timer: 3500,
             timerProgressBar: true,
-        });
-    } else {
-        promocion();
-        Swal.fire({
-            text: 'En breve este botón estará funcional.  Probá sumando más de $10.000 para acceder a la promoción!',
-            icon: 'info',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-        })
-    }
+    });
 });
 
 //Acción cuando hacen click en botón "Vaciar lista"
@@ -143,7 +131,6 @@ function comparaFiltroConCarro(e) {
     let nom = e;
     let resultado = arrayCarro.find(item => item.nombreEl === nom);
     resultado != undefined && checkEnCarrito(tarj);
-
 };
 
 //Productos seleccionados
@@ -175,7 +162,8 @@ function sumarProductoALista(e) {
     } else { //Si el item ya está, llama a sumar 1 unidad a la cantidad, y actualiza el precio total
         sumaCantItem(e);
         precioProductosCarro();
-    }
+    };
+    promocion();
 };
 
 function variacionCant(e) {
@@ -217,11 +205,14 @@ function notificaSumaProd(e) {
         icon: 'success',
         title: `${nomItem} en carrito`
     });
+    if (precioTot > 10000 && counterPromo == 1) {
+        accedistePromo();
+    }
 };
 
 //Función para remover productos cuando el usuario cliquea en "remover"
 function removerProductoDeLista(e) {
-    variacionCant(e);
+    cantidad = e.querySelector('.cantidad').textContent;
     if (cantidad == 1) {
         arrayCarro.splice(indice, 1), //Remuevo
         localStorage.clear(), //Limpio el storage
@@ -232,6 +223,7 @@ function removerProductoDeLista(e) {
         restaCantItem(e);
         precioProductosCarro();
     };
+    promocion();
 };
 
 function restaCantItem(e) { //VER COMO LO INTEGRO
@@ -272,34 +264,6 @@ function precioProductosCarro() {
     document.getElementById('sumaProd').innerHTML = ('$' + precioTot); //Display del precio total de los productos en HTML
 }
 
-//Si la compra supera los $10.000, levanta el producto más barato, y lo agrega al carrito gratis
-function promocion() {
-    if (precioTot > 10000 && counterPromo < 1) {
-        prodPromo = listaProd.reduce(function(ant, act) {
-            return ant.precioUn < act.precioUn ? ant : act;
-        });
-        let nombreEl = prodPromo.nombre;
-        let precioUnEl = prodPromo.precioUn;
-        let cantidadEl = 1
-        let precioSubtotEl = 0
-        arrayPromo = []
-        arrayPromo.push(new ProductoSel(nombreEl, cantidadEl, precioUnEl, precioSubtotEl));
-        arrayCarro = [...arrayCarro, ...arrayPromo];
-        localStorage.setItem('carro', JSON.stringify(arrayCarro));
-        vaciarTabla();
-        armarTabla();
-        counterPromo = counterPromo + 1
-    } else if (precioTot < 10000 && counterPromo != 0) {
-        counterPromo = 0;
-        let indice = arrayCarro.findIndex(prodPromo => prodPromo.nombreEl === arrayPromo[0].nombreEl);
-        arrayCarro.splice(indice, 1), //Remuevo
-        localStorage.clear(), //Limpio el storage
-        localStorage.setItem('carro', JSON.stringify(arrayCarro));
-        vaciarTabla();
-        armarTabla();
-    }
-};
-
 //Armo la tabla a partir del array que levanto del local storage
 function armarTabla() {
     let carroLS = localStorage.getItem('carro'); //Llamo al carro desde el local storage
@@ -333,13 +297,51 @@ function vaciarCarro() {
     }).then((result) => {
         if (result.isConfirmed) {
             vaciarTabla();
-            counterPromo = 0;
             arrayCarro.length = 0;
             localStorage.clear(); //Vació el local storage (elimino carrito)
             precioTot = '';
             document.getElementById('sumaProd').innerHTML = (precioTot);
             tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
         }
+    });
+}
+
+function promocion() {
+    if (precioTot > 10000 && counterPromo == 0) {
+        prodPromo = listaProd.reduce(function(ant, act) { //busco el producto más barato del catálogo
+            return ant.precioUn < act.precioUn ? ant : act;
+        });
+        let nombreEl = prodPromo.nombre;
+        let precioUnEl = prodPromo.precioUn;
+        let cantidadEl = 1;
+        let precioSubtotEl = 0;
+        arrayPromo = [];
+        arrayPromo.push(new ProductoSel(nombreEl, cantidadEl, precioUnEl, precioSubtotEl));
+        arrayCarro = [...arrayCarro, ...arrayPromo]; //Sumo al array del carro mediante un spread
+        localStorage.setItem('carro', JSON.stringify(arrayCarro));
+        vaciarTabla();
+        armarTabla();
+        counterPromo = counterPromo + 1;
+    } else if (precioTot > 10000) {
+        counterPromo = counterPromo + 1;
+    } else if (precioTot < 10000 && counterPromo != 0) {
+        counterPromo = 0;
+        let indice = arrayCarro.findIndex(prodPromo => prodPromo.nombreEl === arrayPromo[0].nombreEl);
+        arrayCarro.splice(indice, 1), //Remuevo
+        localStorage.clear(), //Limpio el storage
+        localStorage.setItem('carro', JSON.stringify(arrayCarro));
+        vaciarTabla();
+        armarTabla();
+    };
+};
+
+function accedistePromo() {
+    Swal.fire({
+        text: 'Accediste a la promoción! Agregamos un item gratis a tu carrito.',
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 3500,
+        timerProgressBar: true,
     });
 }
 
