@@ -212,6 +212,8 @@ function notificaSumaProd(e) {
 
 //Función para remover productos cuando el usuario cliquea en "remover"
 function removerProductoDeLista(e) {
+    item = buscaItem(e);
+    indice = item[2];
     cantidad = e.querySelector('.cantidad').textContent;
     if (cantidad == 1) {
         arrayCarro.splice(indice, 1), //Remuevo
