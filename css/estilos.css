@@ -31,9 +31,33 @@ main > div > p {
   border: 0 !important;
 }
 
+.btnCheckout {
+  background-color: #a763a7;
+  color: white;
+  border: 0 !important;
+}
+
+.btnCheckout:hover {
+  cursor: pointer;
+  background-color: #da81da;
+}
+
+.btnCheckout:focus {
+  cursor: pointer;
+  background-color: #da81da;
+}
+
 .btnAdd {
   background-color: #206331;
   color: white;
+}
+
+.btnAdd:hover {
+  background-color: #329e4d;
+}
+
+.btnAdd:focus {
+  background-color: #329e4d;
 }
 
 .btnRemover {
@@ -41,11 +65,14 @@ main > div > p {
   color: white;
 }
 
-/* .bi-check-circle-fill {
-    color: green;
-    font-size: 2rem;
-    position: absolute;
-    top: -.1rem;
-    right: .5rem;
-} */
+.bi-check-circle-fill {
+  color: green;
+  font-size: 2rem;
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: .5;
+}
 /*# sourceMappingURL=estilos.css.map */
