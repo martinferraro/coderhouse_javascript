@@ -1,36 +1,45 @@
-const productos = document.getElementById('producto');
-const tarjetaProducto = document.getElementById('tarjetaProducto').content; //Template para cada tarjeta de los productos
-const tabla = document.getElementById('tabla');
-const checkout = document.getElementById('checkout');
-const vacCarro = document.getElementById('btnTabla');
-const enCarrito = document.getElementById('enCarrito');
-const fragment = document.createDocumentFragment(); //Nodo offscreen para ir cargando las tarjetas
-let cant = 1
-let counterPromo = 0;
-let listaFiltro = {};
-
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom-end',
-    showConfirmButton: false,
-    timer: 1800,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
-
-//Bases de datos desde archivo json
 document.addEventListener('DOMContentLoaded', () => {
+    //Bases de datos desde archivo json
     cargarJSON();
+    //Acción cuando seleccionan categoría de productos en dropdown
+    dropCategoria.addEventListener('change', () => {
+        seleccionCat(dropCategoria.value);
+    });
+    //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
+    productos.addEventListener('click', e => {
+    addRemover(e);
+    });
+    //Acción cuando hacen click en botón "Checkout"
+    checkout.addEventListener('click', e => {
+        Swal.fire({
+                text: 'En breve este botón estará funcional. Probá sumando más de $10.000 para acceder a la promo!',
+                icon: 'info',
+                showConfirmButton: false,
+                timer: 3500,
+                timerProgressBar: true,
+        });
+    });
+    //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
+    tabla.addEventListener('click', e => {
+        addRemoverItemTabla(e);
+    });
+    //Acción cuando hacen click en botón "Vaciar lista"
+    vacCarro.addEventListener('click', e => {
+        !arrayCarro.length ?
+        Swal.fire({
+            text: 'El carrito se encuentra vacío',
+            icon: 'info',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+        }) : vaciarCarro();
+    });
 });
 
 //Traigo la base de datos desde JSON
 async function cargarJSON() {
     fetch('./js/bd.json')
-        .then(function(res) {
-            return res.json();
-        })
+        .then((response) => response.json())
         .then(function(baseDatos) {
             listaProd = baseDatos.listaProd;
             envios = baseDatos.envios;
@@ -38,13 +47,7 @@ async function cargarJSON() {
         });
 }
 
-//Acción cuando seleccionan categoría de productos en dropdown
-dropCategoria.addEventListener('change', () => {
-    seleccionCat(dropCategoria.value);
-});
-
-//Acción cuando hacen click en botón "Agregar"
-productos.addEventListener('click', e => {
+function addRemover(e) {
     let tarjSel = e.target.parentElement.parentElement;
     if (e.target.classList.contains('btnAdd')) {
         sumarProductoALista(tarjSel);
@@ -57,30 +60,7 @@ productos.addEventListener('click', e => {
     };
     vaciarTabla();
     armarTabla();
-});
-
-//Acción cuando hacen click en botón "Checkout"
-checkout.addEventListener('click', e => {
-    Swal.fire({
-            text: 'En breve este botón estará funcional. Probá sumando más de $10.000 para acceder a la promo!',
-            icon: 'info',
-            showConfirmButton: false,
-            timer: 3500,
-            timerProgressBar: true,
-    });
-});
-
-//Acción cuando hacen click en botón "Vaciar lista"
-vacCarro.addEventListener('click', e => {
-    !arrayCarro.length ?
-    Swal.fire({
-        text: 'El carrito se encuentra vacío',
-        icon: 'info',
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-    }) : vaciarCarro();
-});
+}
 
 //Filtro productos según input dropdown, y llamo a crear las tarjetas según categoría.
 function seleccionCat(e) {
@@ -104,10 +84,9 @@ function vaciarTarjetero() {
 //Display tarjetas según array productos
 let tarjetasEnPantalla = () => {
     Object.values(listaFiltro).forEach(elemento => {
-        let {nombre:nom, descripcion:desc, precioUn:prec} = elemento; //Desestructuro el objeto y armo unos alias
+        let {nombre:nom, precioUn:prec} = elemento; //Desestructuro el objeto y armo unos alias
         let resultado;
         tarjetaProducto.querySelector('.nombreProducto').textContent = nom;
-        tarjetaProducto.querySelector('.descripcion').textContent = desc;
         tarjetaProducto.querySelector('.importe').textContent = '$' + parseInt(prec);
         tarjetaProducto.querySelector('.cantidad').textContent = 0
 
@@ -167,7 +146,6 @@ function sumarProductoALista(e) {
 };
 
 function variacionCant(e) {
-    globalThis.precioSubtot;
     item = buscaItem(e);
     indice = item[2];
     prod = arrayCarro[indice];
@@ -228,7 +206,7 @@ function removerProductoDeLista(e) {
     promocion();
 };
 
-function restaCantItem(e) { //VER COMO LO INTEGRO
+function restaCantItem(e) {
     variacionCant(e);
     cantidad = prod.cantidadEl -= 1;
     precioSubtot = prod.precioUnEl * cantidad;
@@ -260,33 +238,51 @@ function notificaRemueveProd(e) {
         });
 };
 
-//Precio total del carrito: Sumo el subtotal de los distintos productos entre sí
-function precioProductosCarro() {
-    precioTot = arrayCarro.reduce((acc, val) => acc + val.precioSubtotEl, 0);
-    document.getElementById('sumaProd').innerHTML = ('$' + precioTot); //Display del precio total de los productos en HTML
-}
-
 //Armo la tabla a partir del array que levanto del local storage
 function armarTabla() {
     let carroLS = localStorage.getItem('carro'); //Llamo al carro desde el local storage
     let carro = JSON.parse(carroLS); //Parseo el string con el array de los productos seleccionados
     for(let i = 0; i < carro.length; i++) {
         let fila = `<tr>
-                        <td>${carro[i].nombreEl}</td>
-                        <td class="text-center">$${carro[i].precioUnEl}</td>
-                        <td class="text-center">${carro[i].cantidadEl}</td>
-                        <td class="text-end">$${carro[i].precioSubtotEl}</td>
+                        <td class="nombreProducto align-middle">${carro[i].nombreEl}</td>
+                        <td class="text-center align-middle">$${carro[i].precioUnEl}</td>
+                        <td class="text-center align-middle d-flex justify-content-between align-items-center"><button class="btnRemover btn btn-secondary btn-sm bi-dash-circle me-2"></button>${carro[i].cantidadEl}<button class="btnAdd btn btn-secondary btn-sm bi-plus-circle ms-2"></button></td>
+                        <td class="text-end align-middle">$${carro[i].precioSubtotEl}</td>
                     </tr>`;
         tabla.innerHTML += fila
-    }
+    };
+};
+
+function addRemoverItemTabla(e) {
+    seleccionCat('Todas'); //Cargo todas las tarjetas, porque desde la tabla tiene que referir a ellas para actualizar sus cantidades
+    //Obtengo el nombre del producto a partir del click en la línea de la tabla
+    let prodSel = e.target.parentElement.parentElement;
+    let nom = prodSel.querySelector('.nombreProducto').textContent;
+    //Busco la tarjeta con el nombre del producto, así ejecuto el agregar/remover
+    let xpath = "//*[text() = '"+nom+"']/parent::node()/parent::node()/parent::node()";
+    let tarjSel = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    //Según el botón cliqueado, agrego o remuevo cantidades y productos
+    if (e.target.classList.contains('btnAdd')) {
+        let boton = tarjSel.querySelector('.btnAdd'); //Ubico el botón, y ejecuto click
+        boton.click();
+    } else if (e.target.classList.contains('btnRemover')) {
+        let boton = tarjSel.querySelector('.btnRemover'); //Ubico el botón, y ejecuto click
+        boton.click();
+    };
+}
+
+//Precio total del carrito: Sumo el subtotal de los distintos productos entre sí
+function precioProductosCarro() {
+    precioTot = arrayCarro.reduce((acc, val) => acc + val.precioSubtotEl, 0);
+    sumaProd.innerHTML = ('$' + precioTot); //Display del precio total de los productos en HTML
 };
 
 //"Vaciar tabla" lo uso para reiniciar lo que muestra la tabla, sin resetear el local storage (para que no se me multipliquen los items de la tabla indefinidamente)
 function vaciarTabla() {
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild);
-    }
-}
+    };
+};
 
 //Si el usuario quiere borrar toda la compra, incluso del local storage
 function vaciarCarro() {
@@ -304,9 +300,9 @@ function vaciarCarro() {
             precioTot = '';
             document.getElementById('sumaProd').innerHTML = (precioTot);
             tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
-        }
+        };
     });
-}
+};
 
 function promocion() {
     if (precioTot > 10000 && counterPromo == 0) {
@@ -323,9 +319,9 @@ function promocion() {
         localStorage.setItem('carro', JSON.stringify(arrayCarro));
         vaciarTabla();
         armarTabla();
-        counterPromo = counterPromo + 1;
+        counterPromo++;
     } else if (precioTot > 10000) {
-        counterPromo = counterPromo + 1;
+        counterPromo++;
     } else if (precioTot < 10000 && counterPromo != 0) {
         counterPromo = 0;
         let indice = arrayCarro.findIndex(prodPromo => prodPromo.nombreEl === arrayPromo[0].nombreEl);
