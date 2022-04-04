@@ -5,11 +5,16 @@
 }
 
 /* GENERAL */
-header {
-  background-color: #c8dbe6;
+.nav1 {
+  background-color: #d4dce1;
+  z-index: 1;
 }
 
-h2 {
+.nav2 {
+  background-color: #e6cce2;
+}
+
+h4 {
   color: #465964;
 }
 
@@ -31,18 +36,7 @@ main > div > p {
   border: 0 !important;
 }
 
-.btnCheckout {
-  background-color: #a763a7;
-  color: white;
-  border: 0 !important;
-}
-
-.btnCheckout:hover {
-  cursor: pointer;
-  background-color: #da81da;
-}
-
-.btnCheckout:focus {
+.btnCheckout:hover, .btnCheckout:focus, .btnMenu:hover, .btnMenu:focus, .btnComprar:hover, .btnComprar:focus {
   cursor: pointer;
   background-color: #da81da;
 }
@@ -52,11 +46,7 @@ main > div > p {
   color: white;
 }
 
-.btnAdd:hover {
-  background-color: #329e4d;
-}
-
-.btnAdd:focus {
+.btnAdd:hover, .btnAdd:focus {
   background-color: #329e4d;
 }
 

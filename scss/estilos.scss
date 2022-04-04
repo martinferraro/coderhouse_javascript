@@ -5,11 +5,16 @@
 }
 
 /* GENERAL */
-header {
-    background-color: #c8dbe6;
+.nav1 {
+    background-color: #d4dce1;
+    z-index: 1;
 }
 
-h2 {
+.nav2 {
+    background-color: #e6cce2;
+}
+
+h4 {
     color: #465964;
 }
 
@@ -29,29 +34,18 @@ main > div > p {
     background-color: #a763a7;
     color: white;
     border: 0!important;
-}
-
-.btnCheckout {
-    background-color: #a763a7;
-    color: white;
-    border: 0!important;
-    &:hover {
-        cursor: pointer;
-        background-color: #da81da;
-    }
-    &:focus {
-        cursor: pointer;
-        background-color: #da81da;
-    }
+    &Checkout, &Menu, &Comprar {
+        &:hover, &:focus {
+            cursor: pointer;
+            background-color: #da81da;
+        }
+    };
 }
 
 .btnAdd {
     background-color: #206331;
     color: white;
-    &:hover {
-        background-color: #329e4d;
-    }
-    &:focus {
+    &:hover, &:focus {
         background-color: #329e4d;
     }
 }

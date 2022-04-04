@@ -1,16 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //Bases de datos desde archivo json
-    cargarJSON();
-    //Acción cuando seleccionan categoría de productos en dropdown
-    dropCategoria.addEventListener('change', () => {
-        seleccionCat(dropCategoria.value);
-    });
-    //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
-    productos.addEventListener('click', e => {
-    addRemover(e);
-    });
-    //Acción cuando hacen click en botón "Checkout"
-    checkout.addEventListener('click', e => {
+    cargarJSON(); //Bases de datos desde archivo json
+    navMenu.addEventListener("click", filtroMenu); //Acción cuando seleccionan categoría de productos en el navbar
+    productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
+    checkout.addEventListener('click', e => { //Acción cuando hacen click en botón "Checkout"
         Swal.fire({
                 text: 'En breve este botón estará funcional. Probá sumando más de $10.000 para acceder a la promo!',
                 icon: 'info',
@@ -19,12 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 timerProgressBar: true,
         });
     });
-    //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
-    tabla.addEventListener('click', e => {
-        addRemoverItemTabla(e);
-    });
-    //Acción cuando hacen click en botón "Vaciar lista"
-    vacCarro.addEventListener('click', e => {
+    tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
+    vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
         !arrayCarro.length ?
         Swal.fire({
             text: 'El carrito se encuentra vacío',
@@ -35,6 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }) : vaciarCarro();
     });
 });
+
+//Ocultar / Mostrar tarjetero o carrito
+miCarritoIn = () => {
+    tarjetero.style.display = 'none',
+    carrito.style.visibility = 'visible';
+};
+miCarritoOut = () => {
+    tarjetero.style.display = 'block',
+    carrito.style.visibility = 'hidden';
+};
+
+function filtroMenu(e) {
+    let botonClick = e.target;
+    if(botonClick.tagName == 'BUTTON'){
+        seleccionCat(botonClick.value)
+    }
+}
 
 //Traigo la base de datos desde JSON
 async function cargarJSON() {
@@ -255,14 +260,11 @@ function armarTabla() {
 
 function addRemoverItemTabla(e) {
     seleccionCat('Todas'); //Cargo todas las tarjetas, porque desde la tabla tiene que referir a ellas para actualizar sus cantidades
-    //Obtengo el nombre del producto a partir del click en la línea de la tabla
-    let prodSel = e.target.parentElement.parentElement;
-    let nom = prodSel.querySelector('.nombreProducto').textContent;
-    //Busco la tarjeta con el nombre del producto, así ejecuto el agregar/remover
+    let prodSel = e.target.parentElement.parentElement; //Obtengo el nombre del producto a partir del click en la línea de la tabla
+    let nom = prodSel.querySelector('.nombreProducto').textContent; //Busco la tarjeta con el nombre del producto, así ejecuto el agregar/remover
     let xpath = "//*[text() = '"+nom+"']/parent::node()/parent::node()/parent::node()";
     let tarjSel = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    //Según el botón cliqueado, agrego o remuevo cantidades y productos
-    if (e.target.classList.contains('btnAdd')) {
+    if (e.target.classList.contains('btnAdd')) { //Según el botón cliqueado, agrego o remuevo cantidades y productos
         let boton = tarjSel.querySelector('.btnAdd'); //Ubico el botón, y ejecuto click
         boton.click();
     } else if (e.target.classList.contains('btnRemover')) {
@@ -335,16 +337,10 @@ function promocion() {
 
 function accedistePromo() {
     Swal.fire({
-        text: 'Accediste a la promoción! Agregamos un item gratis a tu carrito.',
+        text: '¡Accediste a la promoción! Agregamos un item gratis a tu carrito.',
         icon: 'info',
         showConfirmButton: false,
         timer: 3500,
         timerProgressBar: true,
     });
 }
-
-//Traigo elementos del código anterior para completar después
-/* document.getElementById('ingBrut').innerHTML = ('$' + ingBrutTot);
-document.getElementById('zonaEnvio').innerHTML = zonaEnvio;
-document.getElementById('costoEnvio').innerHTML = ('$' + costoEnvio);
-document.getElementById('precioFinal').innerHTML = ('$' + precioFinal); */

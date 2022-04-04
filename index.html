@@ -15,45 +15,39 @@
     <body>
         <!-- BARRA ENCABEZADO -->
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand p-0 m-0"><h2 class="m-0">Productos de belleza</h2></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav class="nav1 navbar navbar-expand-lg navbar-light d-flex justify-content-between shadow p-2">
+                <a class="navbar-brand p-0 ms-1"><h4 class="m-0">Catálogo de productos de belleza</h4></a>
+                <button id="checkout" class="btnCheckout btn btn-secondary me-2">Mi carrito<i class="bi bi-cart ms-2"></i></button>
+            </nav>
+            <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light p-2">
+                <div class="container-fluid d-flex justify-content-between col-9 p-0">
+                    <button class="navbar-toggler bg-light bg-opacity-25 navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="container-fluid d-flex align-items-center justify-content-end pe-0">
-                            <div class="navbar-nav align-items-center me-1 mb-2 mb-lg-0">
-                                <p class="mb-0 me-3">Filtrar por categoría:</p>
-                                <select id="dropCategoria" class="nav-link dropdown-toggle p-1">
-                                    <option value="Todas">Todas las categorías</option>
-                                    <option value="Maquillaje">Maquillaje</option>
-                                    <option value="Cuidados de la piel">Cuidados de la piel</option>
-                                    <option value="Cuidados del cabello">Cuidados del cabello</option>
-                                    <option value="Protectores solares">Protectores solares</option>
-                                </select>
-                            </div>
-                            <!-- BARRA DE BÚSQUEDA -->
-                            <!-- <form class="d-flex">
-                                <input id="buscar" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Busqueda">
-                                <button id="botonBuscar" class="btn btn-outline-success me-4" type="submit">Buscar</button>
-                            </form> -->
-                        </div>
+                        <button class="btnMenu btn btn-secondary m-1" value="Todas">Todas las categorías</button>
+                        <button class="btnMenu btn btn-secondary m-1" value="Cuidados de la piel">Cuidados de la piel</button>
+                        <button class="btnMenu btn btn-secondary m-1" value="Maquillaje">Maquillaje</button>
+                        <button class="btnMenu btn btn-secondary m-1" value="Cuidados del cabello">Cuidados del cabello</button>
+                        <button class="btnMenu btn btn-secondary m-1" value="Protectores solares">Protectores solares</button>
                     </div>
+                </div>
+                <!-- BARRA DE BÚSQUEDA -->
+                <div class="col-3 pe-1">
+                    <input id="buscar" class="form-control" type="search" placeholder="Buscar" aria-label="Busqueda">
                 </div>
             </nav>
         </header>
 
         <main>
-            <div class="container-fluid d-flex mt-2 mb-4">
+            <div class="container-fluid d-flex flex-column align-items-center mt-2 mb-4">
                 <!-- TARJETAS PRODUCTOS -->
-                <div class="container-fluid col-5 p-0 mt-1" id="tarjetero">
+                <div id="tarjetero" class="container-fluid col-12 p-0 mt-1">
                     <div class="producto row" id="producto"></div>
                 </div>
                 <!-- TABLA PRODUCTOS SELECCIONADOS -->
-                <div class="d-flex flex-column col-7 ps-4">
-                    <p class="fw-bold pt-0 mb-2">Lista de productos seleccionados</p>
-                    <div class="presupuesto d-flex flex-column card p-3 col-12 shadow">
+                <div id="carrito" class="d-flex flex-column col-lg-8 col-sm-12" style="visibility: hidden;">
+                    <div class="presupuesto d-flex flex-column card p-2 col-12 shadow">
                         <table class="table">
                             <thead class="bg-light border-bottom-0">
                                 <th class="text-center">Producto</th>
@@ -71,11 +65,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mt-2">
+                        <div class="d-flex justify-content-end">
                             <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
                             <div class="d-flex col-6 mt-2">
-                                <button id="checkout" class="btnCheckout btn btn-secondary w-100 me-2">Checkout <i class="bi bi-cart"></i></button>
-                                <button id="btnTabla" class="btnRemover btn btn-secondary w-25"><i class="bi-trash3"></i></button>
+                                <button id="btnTabla" class="btnRemover btn btn-secondary w-50">Vaciar carrito<i class="bi-trash3 ms-2"></i></button>
+                                <button id="comprar" class="btnComprar btn btn-secondary w-50 ms-2">Comprar<i class="bi bi-cart ms-2"></i></button>
                             </div>
                         </div>
                     </div>
@@ -85,7 +79,7 @@
 
         <!-- TEMPLATE TARJETA DEL PRODUCTO -->
         <template id="tarjetaProducto">
-            <div class="col-6 mb-4">
+            <div class="col-lg-3 col-sm-6 mb-4">
                 <div class="tarjProd card h-100 shadow">
                     <div class="card-body p-0 d-flex flex-column">
                         <div class="d-flex flex-column h-100 justify-content-between">
