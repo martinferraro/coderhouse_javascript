@@ -5,15 +5,6 @@
 }
 
 /* GENERAL */
-.nav1 {
-    background-color: #d4dce1;
-    z-index: 1;
-}
-
-.nav2 {
-    background-color: #e6cce2;
-}
-
 h4 {
     color: #465964;
 }
@@ -26,9 +17,31 @@ main > div > p {
     color: #465964;
 }
 
-.tarjProd, .presupuesto {
+.nav1, footer {
+    background-color: #d4dce1;
+    z-index: 1;
+}
+
+.nav2 {
+    background-color: #e6cce2;
+}
+
+.tarjProd {
     border-color: #a763a7;
     background-color: #fdfcfd;
+    box-shadow: .2rem .2rem .3rem #bdbdbd;
+}
+
+.presupuesto {
+    border-color: #30748f;
+    background-color: #fdfcfd;
+    box-shadow: .2rem .2rem .3rem #bdbdbd;
+}
+
+.carritoFooter {
+    font-size: 1.5rem;
+    background-color: #30748f;
+    color: white;
 }
 
 .btn {

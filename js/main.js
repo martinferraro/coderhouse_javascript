@@ -136,9 +136,11 @@ function sumarProductoALista(e) {
         localStorage.setItem('carro', JSON.stringify(arrayCarro)); //Envio el carro a local storage para levantarlo en checkout
         e.querySelector('.cantidad').textContent = cantidadEl //Cantidad en tarjeta
         precioProductosCarro(); //Llamo a la función para sumar los importes de todos los productos
+        cantidadProductosCarro(); //Idem para cantidad total
     } else { //Si el item ya está, llama a sumar 1 unidad a la cantidad, y actualiza el precio total
         sumaCantItem(e);
         precioProductosCarro();
+        cantidadProductosCarro();
     };
     promocion();
 };
@@ -179,7 +181,8 @@ function notificaSumaProd(e) {
     nomItem = item[0];
     Toast.fire({
         icon: 'success',
-        title: `${nomItem} en carrito`
+        title: `${nomItem} en carrito`,
+        position: 'top-end'
     });
     if (precioTot > 10000 && counterPromo == 1) {
         accedistePromo();
@@ -197,9 +200,11 @@ function removerProductoDeLista(e) {
         localStorage.setItem('carro', JSON.stringify(arrayCarro)), //Actualizo el storage
         e.querySelector('.cantidad').textContent = 0
         precioProductosCarro(); //Actualizo la sumatoria de los precios */
+        cantidadProductosCarro();
     } else if (cantidad > 1) {
         restaCantItem(e);
         precioProductosCarro();
+        cantidadProductosCarro();
     };
     promocion();
 };
@@ -232,7 +237,8 @@ function notificaRemueveProd(e) {
     indice != -1 &&
         Toast.fire({
             icon: 'error',
-            title: `${nomItem} fuera del carrito`
+            title: `${nomItem} fuera del carrito`,
+            position: 'top-end'
         });
 };
 
@@ -270,6 +276,12 @@ function addRemoverItemTabla(e) {
 function precioProductosCarro() {
     precioTot = arrayCarro.reduce((acc, val) => acc + val.precioSubtotEl, 0);
     sumaProd.innerHTML = ('$' + precioTot); //Display del precio total de los productos en HTML
+    sumaProd2.innerHTML = ('$' + precioTot);
+};
+
+function cantidadProductosCarro() {
+    cantTot = arrayCarro.reduce((acc, val) => acc + val.cantidadEl, 0);
+    sumaCant.innerHTML = (cantTot); //Display de cantidad total de productos en HTML
 };
 
 //"Vaciar tabla" lo uso para reiniciar lo que muestra la tabla, sin resetear el local storage (para que no se me multipliquen los items de la tabla indefinidamente)
@@ -293,7 +305,10 @@ function vaciarCarro() {
             arrayCarro.length = 0;
             localStorage.clear(); //Vació el local storage (elimino carrito)
             precioTot = '';
-            document.getElementById('sumaProd').innerHTML = (precioTot);
+            cantTot = '';
+            document.getElementById('sumaProd').innerHTML = precioTot;
+            document.getElementById('sumaProd2').innerHTML = precioTot;
+            document.getElementById('sumaCant').innerHTML = cantTot;
             tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
         };
     });
@@ -314,7 +329,8 @@ function promocion() {
         localStorage.setItem('carro', JSON.stringify(arrayCarro));
         vaciarTabla();
         armarTabla();
-        counterPromo++;
+        cantidadProductosCarro();
+        counterPromo++; //Evito que se repita la promo si siguen agregando productos
     } else if (precioTot > 10000) {
         counterPromo++;
     } else if (precioTot < 10000 && counterPromo != 0) {
@@ -325,6 +341,7 @@ function promocion() {
         localStorage.setItem('carro', JSON.stringify(arrayCarro));
         vaciarTabla();
         armarTabla();
+        cantidadProductosCarro();
     };
 };
 

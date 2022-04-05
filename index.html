@@ -15,24 +15,24 @@
     <body>
         <!-- BARRA ENCABEZADO -->
         <header>
-            <nav class="nav1 navbar navbar-expand-lg navbar-light d-flex justify-content-between shadow px-2">
+            <nav class="nav1 navbar navbar-expand-lg navbar-light d-flex justify-content-between shadow px-3 py-2">
                 <a class="navbar-brand p-0"><h4 class="m-0">Catálogo de productos de belleza</h4></a>
                 <div class="d-flex col-3">
-                    <button id="contCompra" class="btnContCompra btn btn-secondary w-100 me-1"><p class="m-0">Seguir comprando<i class="bi bi-plus-circle ms-2"></i></p></button>
+                    <button id="contCompra" class="btnContCompra btn btn-secondary w-100 me-2"><p class="m-0">Seguir comprando<i class="bi bi-plus-circle ms-2"></i></p></button>
                     <button id="checkout" class="btnCheckout btn btn-secondary w-75"><p class="m-0">Mi carrito<i class="bi bi-cart ms-2"></i></p></button>
                 </div>
             </nav>
-            <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light p-2">
+            <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
                 <div class="container-fluid d-flex justify-content-between col-9 p-0">
                     <button class="navbar-toggler bg-light bg-opacity-25 navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <button class="btnMenu btn btn-secondary m-1 ms-0" value="Todas">Todas las categorías</button>
-                        <button class="btnMenu btn btn-secondary m-1" value="Cuidados de la piel">Cuidados de la piel</button>
-                        <button class="btnMenu btn btn-secondary m-1" value="Maquillaje">Maquillaje</button>
-                        <button class="btnMenu btn btn-secondary m-1" value="Cuidados del cabello">Cuidados del cabello</button>
-                        <button class="btnMenu btn btn-secondary m-1" value="Protectores solares">Protectores solares</button>
+                        <button class="btnMenu btn btn-secondary mx-1 ms-0" value="Todas">Todas las categorías</button>
+                        <button class="btnMenu btn btn-secondary mx-1" value="Cuidados de la piel">Cuidados de la piel</button>
+                        <button class="btnMenu btn btn-secondary mx-1" value="Maquillaje">Maquillaje</button>
+                        <button class="btnMenu btn btn-secondary mx-1" value="Cuidados del cabello">Cuidados del cabello</button>
+                        <button class="btnMenu btn btn-secondary mx-1" value="Protectores solares">Protectores solares</button>
                     </div>
                 </div>
                 <!-- BARRA DE BÚSQUEDA -->
@@ -43,14 +43,14 @@
         </header>
 
         <main>
-            <div class="container-fluid d-flex flex-column align-items-center my-2">
+            <div class="container-fluid d-flex flex-column align-items-center my-2 overflow-auto">
                 <!-- TARJETAS PRODUCTOS -->
                 <div id="tarjetero" class="container-fluid col-12 p-2">
                     <div class="producto row" id="producto"></div>
                 </div>
                 <!-- TABLA PRODUCTOS SELECCIONADOS -->
                 <div id="carrito" class="d-flex flex-column col-lg-8 col-sm-12 mt-2" style="visibility: hidden;">
-                    <div class="presupuesto d-flex flex-column card p-2 col-12 shadow">
+                    <div class="presupuesto d-flex flex-column card p-2 col-12">
                         <table class="table">
                             <thead class="bg-light border-bottom-0">
                                 <th class="text-center">Producto</th>
@@ -79,6 +79,17 @@
                 </div>
             </div>
         </main>
+
+        <footer class="footer fixed-bottom mt-auto px-3 py-2">
+            <div class="container-fluid d-flex align-items-center justify-content-end p-0">
+                <i class="carritoFooter card p-2 rounded-circle bi bi-cart me-2"></i>
+                <div class="card presupuesto d-flex flex-row p-2">
+                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant" class="m-0 fw-bold"></h6>
+                    <h6 class="m-0 mx-2">|</h6>
+                    <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd2" class="m-0 fw-bold"></h6>
+                </div>
+            </div>
+        </footer>
 
         <!-- TEMPLATE TARJETA DEL PRODUCTO -->
         <template id="tarjetaProducto">
