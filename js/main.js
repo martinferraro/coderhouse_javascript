@@ -1,16 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarJSON(); //Bases de datos desde archivo json
-    navMenu.addEventListener("click", filtroMenu); //Acción cuando seleccionan categoría de productos en el navbar
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
-    checkout.addEventListener('click', e => { //Acción cuando hacen click en botón "Checkout"
-        Swal.fire({
-                text: 'En breve este botón estará funcional. Probá sumando más de $10.000 para acceder a la promo!',
-                icon: 'info',
-                showConfirmButton: false,
-                timer: 3500,
-                timerProgressBar: true,
-        });
-    });
+    navMenu.addEventListener("click", filtroMenu); //Acción cuando seleccionan categoría de productos en el navbar
+    checkout.addEventListener('click', miCarritoIn);
+    contCompra.addEventListener('click', miCarritoOut);
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
         !arrayCarro.length ?
@@ -67,7 +60,7 @@ function addRemover(e) {
     armarTabla();
 }
 
-//Filtro productos según input dropdown, y llamo a crear las tarjetas según categoría.
+//Filtro productos según selección en menu, y llamo a crear las tarjetas según categoría.
 function seleccionCat(e) {
     e === 'Todas' ? seleccionTodo() : listaFiltro = listaProd.filter(cat => cat.categoria === e);
     tarjetasEnPantalla();
@@ -337,6 +330,7 @@ function promocion() {
 
 function accedistePromo() {
     Swal.fire({
+        title: '¡Felicitaciones!',
         text: '¡Accediste a la promoción! Agregamos un item gratis a tu carrito.',
         icon: 'info',
         showConfirmButton: false,

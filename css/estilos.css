@@ -26,8 +26,9 @@ main > div > p {
   color: #465964;
 }
 
-.tarjProd {
+.tarjProd, .presupuesto {
   border-color: #a763a7;
+  background-color: #fdfcfd;
 }
 
 .btn {
@@ -36,7 +37,7 @@ main > div > p {
   border: 0 !important;
 }
 
-.btnCheckout:hover, .btnCheckout:focus, .btnMenu:hover, .btnMenu:focus, .btnComprar:hover, .btnComprar:focus {
+.btnMenu:hover, .btnMenu:focus {
   cursor: pointer;
   background-color: #da81da;
 }
@@ -48,6 +49,15 @@ main > div > p {
 
 .btnAdd:hover, .btnAdd:focus {
   background-color: #329e4d;
+}
+
+.btnContCompra, .btnCheckout, .btnComprar {
+  background-color: #30748f;
+  color: white;
+}
+
+.btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
+  background-color: #47a3c8;
 }
 
 .btnRemover {

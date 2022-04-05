@@ -26,33 +26,39 @@ main > div > p {
     color: #465964;
 }
 
-.tarjProd {
+.tarjProd, .presupuesto {
     border-color: #a763a7;
+    background-color: #fdfcfd;
 }
 
 .btn {
     background-color: #a763a7;
     color: white;
     border: 0!important;
-    &Checkout, &Menu, &Comprar {
+    &Menu {
         &:hover, &:focus {
             cursor: pointer;
             background-color: #da81da;
         }
     };
-}
-
-.btnAdd {
-    background-color: #206331;
-    color: white;
-    &:hover, &:focus {
-        background-color: #329e4d;
+    &Add {
+        background-color: #206331;
+        color: white;
+        &:hover, &:focus {
+            background-color: #329e4d;
+        }
+    };
+    &ContCompra, &Checkout, &Comprar {
+        background-color: #30748f;
+        color: white;
+        &:hover, &:focus {
+            background-color: #47a3c8;
+        }
+    };
+    &Remover {
+        background-color: #949494;
+        color: white;
     }
-}
-
-.btnRemover {
-    background-color: #949494;
-    color: white;
 }
 
 .bi-check-circle-fill {
