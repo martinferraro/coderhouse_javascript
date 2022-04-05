@@ -4,9 +4,14 @@
   margin: 0;
 }
 
+/* COLORES */
 /* GENERAL */
 h4 {
-  color: #465964;
+  color: #69447c;
+}
+
+h6 {
+  color: #69447c;
 }
 
 p {
@@ -17,18 +22,26 @@ main > div > p {
   color: #465964;
 }
 
-.nav1, footer {
-  background-color: #d4dce1;
+.nav1 {
+  background-color: #d7c9df;
+  z-index: 1;
+  height: 50px;
+}
+
+.footer {
+  background-color: #d8bbd2;
   z-index: 1;
 }
 
 .nav2 {
-  background-color: #e6cce2;
+  background-color: #d8bbd2;
+  padding-top: 60px !important;
 }
 
 .tarjProd {
-  border-color: #a763a7;
+  border-color: #d8bbd2;
   background-color: #fdfcfd;
+  border-radius: 1.5rem;
   -webkit-box-shadow: .2rem .2rem .3rem #bdbdbd;
           box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
@@ -40,39 +53,25 @@ main > div > p {
           box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
 
-.carritoFooter {
-  font-size: 1.5rem;
-  background-color: #30748f;
-  color: white;
-}
-
 .btn {
-  background-color: #a763a7;
+  background-color: #69447c;
   color: white;
   border: 0 !important;
+  border-radius: 5rem;
 }
 
-.btnMenu:hover, .btnMenu:focus {
+.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
   cursor: pointer;
-  background-color: #da81da;
+  background-color: #85569d;
 }
 
 .btnAdd {
-  background-color: #206331;
+  background-color: #b37aa7;
   color: white;
 }
 
 .btnAdd:hover, .btnAdd:focus {
-  background-color: #329e4d;
-}
-
-.btnContCompra, .btnCheckout, .btnComprar {
-  background-color: #30748f;
-  color: white;
-}
-
-.btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
-  background-color: #47a3c8;
+  background-color: #39804b;
 }
 
 .btnRemover {
@@ -89,5 +88,21 @@ main > div > p {
   padding: 0 !important;
   margin: 0 !important;
   opacity: .5;
+  -webkit-animation: pop 0.2s linear 1;
+          animation: pop 0.2s linear 1;
+}
+
+@-webkit-keyframes pop {
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes pop {
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
 }
 /*# sourceMappingURL=estilos.css.map */

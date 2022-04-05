@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarJSON(); //Bases de datos desde archivo json
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
-    navMenu.addEventListener("click", filtroMenu); //Acción cuando seleccionan categoría de productos en el navbar
+    navMenu.addEventListener("click", e => { //Acción cuando seleccionan categoría de productos en el navbar
+        filtroMenu(e);
+        miCarritoOut(e);
+    });
     checkout.addEventListener('click', miCarritoIn);
-    contCompra.addEventListener('click', miCarritoOut);
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
         !arrayCarro.length ?

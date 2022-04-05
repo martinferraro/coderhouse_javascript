@@ -4,9 +4,20 @@
     margin: 0;
 }
 
+/* COLORES */
+$btnMenu: #69447c;
+$btnAgregar: #39804b;
+$btnGen: #30748f;
+$btnRemover: #949494;
+$bgNav2: #d8bbd2;
+
 /* GENERAL */
 h4 {
-    color: #465964;
+    color: $btnMenu;
+}
+
+h6 {
+    color: $btnMenu;
 }
 
 p {
@@ -17,18 +28,26 @@ main > div > p {
     color: #465964;
 }
 
-.nav1, footer {
-    background-color: #d4dce1;
+.nav1 {
+    background-color: #d7c9df;
+    z-index: 1;
+    height: 50px;
+}
+
+.footer {
+    background-color: $bgNav2;
     z-index: 1;
 }
 
 .nav2 {
-    background-color: #e6cce2;
+    background-color: $bgNav2;
+    padding-top: 60px!important;
 }
 
 .tarjProd {
-    border-color: #a763a7;
+    border-color: $bgNav2;
     background-color: #fdfcfd;
+    border-radius: 1.5rem;
     box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
 
@@ -38,38 +57,26 @@ main > div > p {
     box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
 
-.carritoFooter {
-    font-size: 1.5rem;
-    background-color: #30748f;
-    color: white;
-}
-
 .btn {
-    background-color: #a763a7;
+    background-color: $btnMenu;
     color: white;
     border: 0!important;
-    &Menu {
+    border-radius: 5rem;
+    &Menu, &ContCompra, &Checkout, &Comprar {
         &:hover, &:focus {
             cursor: pointer;
-            background-color: #da81da;
+            background-color: lighten($btnMenu, 10%);
         }
     };
     &Add {
-        background-color: #206331;
+        background-color: darken($bgNav2, 20%);
         color: white;
         &:hover, &:focus {
-            background-color: #329e4d;
-        }
-    };
-    &ContCompra, &Checkout, &Comprar {
-        background-color: #30748f;
-        color: white;
-        &:hover, &:focus {
-            background-color: #47a3c8;
+            background-color: $btnAgregar;
         }
     };
     &Remover {
-        background-color: #949494;
+        background-color: $btnRemover;
         color: white;
     }
 }
@@ -83,4 +90,9 @@ main > div > p {
     padding: 0!important;
     margin: 0!important;
     opacity: .5;
+    animation: pop 0.2s linear 1;
+}
+
+@keyframes pop{
+    50%  {transform: scale(1.2);}
 }

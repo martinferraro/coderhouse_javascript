@@ -4,7 +4,6 @@ const
     carrito = document.getElementById('carrito'),
     tarjetaProducto = document.getElementById('tarjetaProducto').content, //Template para cada tarjeta de los productos
     tabla = document.getElementById('tabla'),
-    contCompra = document.getElementById('contCompra'),
     checkout = document.getElementById('checkout'),
     vacCarro = document.getElementById('btnTabla'),
     enCarrito = document.getElementById('enCarrito'),
