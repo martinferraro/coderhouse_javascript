@@ -10,6 +10,7 @@ $btnAgregar: #39804b;
 $btnGen: #30748f;
 $btnRemover: #949494;
 $bgNav2: #d8bbd2;
+$bgTarj: #fafafa;
 
 /* GENERAL */
 h4 {
@@ -46,15 +47,24 @@ main > div > p {
 
 .tarjProd {
     border-color: $bgNav2;
-    background-color: #fdfcfd;
+    background-color: $bgTarj;
     border-radius: 1.5rem;
     box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
 
+.imgTarj {
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+    background: radial-gradient(closest-side, darken($bgNav2, 20%), lighten($bgNav2, 15%));
+    object-fit: cover;
+}
+
 .presupuesto {
-    border-color: #30748f;
-    background-color: #fdfcfd;
+    border-color: $bgNav2;
+    background-color: $bgTarj;
     box-shadow: .2rem .2rem .3rem #bdbdbd;
+    margin-bottom: 58px;
 }
 
 .btn {
@@ -62,10 +72,15 @@ main > div > p {
     color: white;
     border: 0!important;
     border-radius: 5rem;
+    font-size: .8rem;
+    font-weight: bold;
     &Menu, &ContCompra, &Checkout, &Comprar {
         &:hover, &:focus {
             cursor: pointer;
             background-color: lighten($btnMenu, 10%);
+        }
+        &Carr {
+            font-size: 1rem;
         }
     };
     &Add {
@@ -78,6 +93,9 @@ main > div > p {
     &Remover {
         background-color: $btnRemover;
         color: white;
+        &Carr {
+            font-size: 1rem;
+        }
     }
 }
 

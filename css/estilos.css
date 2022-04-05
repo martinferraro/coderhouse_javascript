@@ -40,17 +40,27 @@ main > div > p {
 
 .tarjProd {
   border-color: #d8bbd2;
-  background-color: #fdfcfd;
+  background-color: #fafafa;
   border-radius: 1.5rem;
   -webkit-box-shadow: .2rem .2rem .3rem #bdbdbd;
           box-shadow: .2rem .2rem .3rem #bdbdbd;
 }
 
+.imgTarj {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  background: radial-gradient(closest-side, #b37aa7, #f4ecf2);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .presupuesto {
-  border-color: #30748f;
-  background-color: #fdfcfd;
+  border-color: #d8bbd2;
+  background-color: #fafafa;
   -webkit-box-shadow: .2rem .2rem .3rem #bdbdbd;
           box-shadow: .2rem .2rem .3rem #bdbdbd;
+  margin-bottom: 58px;
 }
 
 .btn {
@@ -58,11 +68,17 @@ main > div > p {
   color: white;
   border: 0 !important;
   border-radius: 5rem;
+  font-size: .8rem;
+  font-weight: bold;
 }
 
 .btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
   cursor: pointer;
   background-color: #85569d;
+}
+
+.btnMenuCarr, .btnContCompraCarr, .btnCheckoutCarr, .btnComprarCarr {
+  font-size: 1rem;
 }
 
 .btnAdd {
@@ -77,6 +93,10 @@ main > div > p {
 .btnRemover {
   background-color: #949494;
   color: white;
+}
+
+.btnRemoverCarr {
+  font-size: 1rem;
 }
 
 .bi-check-circle-fill {

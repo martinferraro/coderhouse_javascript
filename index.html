@@ -16,24 +16,24 @@
         <!-- BARRA ENCABEZADO -->
         <header>
             <nav class="nav1 navbar navbar-expand-lg navbar-light fixed-top d-flex justify-content-between shadow px-3 py-2">
-                <a class="navbar-brand w-100 text-end p-0 m-0"><h4 class="m-0">Catálogo de productos de belleza</h4></a>
+                <!-- BARRA DE BÚSQUEDA -->
+                <div class="col-3">
+                    <input id="buscar" class="form-control p-1" type="search" placeholder="Buscar" aria-label="Busqueda">
+                </div>
+                <a class="navbar-brand w-100 text-end p-0 m-0"><h4 class="m-0 fw-bold">Catálogo de productos de belleza</h4></a>
             </nav>
             <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
-                <div class="container-fluid d-flex justify-content-between col-9 p-0">
+                <div class="d-flexcol-9 p-0">
                     <button class="navbar-toggler bg-light bg-opacity-25 navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <button class="btnMenu btn btn-secondary mx-1 ms-0" value="Todas">Todas las categorías</button>
-                        <button class="btnMenu btn btn-secondary mx-1" value="Cuidados de la piel">Cuidados de la piel</button>
-                        <button class="btnMenu btn btn-secondary mx-1" value="Maquillaje">Maquillaje</button>
-                        <button class="btnMenu btn btn-secondary mx-1" value="Cuidados del cabello">Cuidados del cabello</button>
-                        <button class="btnMenu btn btn-secondary mx-1" value="Protectores solares">Protectores solares</button>
+                        <button class="btnMenu btn btn-secondary me-2 ms-0" value="Todas">Todas las categorías</button>
+                        <button class="btnMenu btn btn-secondary me-2" value="Cuidados de la piel">Cuidados de la piel</button>
+                        <button class="btnMenu btn btn-secondary me-2" value="Maquillaje">Maquillaje</button>
+                        <button class="btnMenu btn btn-secondary me-2" value="Cuidados del cabello">Cuidados del cabello</button>
+                        <button class="btnMenu btn btn-secondary" value="Protectores solares">Protectores solares</button>
                     </div>
-                </div>
-                <!-- BARRA DE BÚSQUEDA -->
-                <div class="col-3">
-                    <input id="buscar" class="form-control" type="search" placeholder="Buscar" aria-label="Busqueda">
                 </div>
             </nav>
         </header>
@@ -57,19 +57,18 @@
                             <tbody id="tabla" class="border-top"></tbody>
                         </table>
                         <div class="d-flex justify-content-end bg-light border-top">
-                            <div class="col-6 p-2">
+                            <div class="col-3 p-2">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0 fw-bold">Total compra:</h6>
                                     <h6 id="sumaProd" class="m-0 fw-bold"></h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
-                            <div class="d-flex col-6 mt-2">
-                                <button id="btnTabla" class="btnRemover btn btn-secondary w-50">Vaciar carrito<i class="bi-trash3 ms-2"></i></button>
-                                <button id="comprar" class="btnComprar btn btn-secondary w-50 ms-2">Comprar<i class="bi bi-cart-check ms-2"></i></button>
-                            </div>
+                        <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
+                        <div class="d-flex justify-content-center col-12 mt-2">
+                            <button id="btnTabla" class="btnRemoverCarr btn btn-secondary me-2"><i class="bi-trash3"></i></button>
+                            <button id="vuelveCompra" class="btnCheckoutCarr btn btn-secondary d-flex me-2">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
+                            <button id="comprar" class="btnComprarCarr btn btn-secondary fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
                         </div>
                     </div>
                 </div>
@@ -83,7 +82,11 @@
                     <h6 class="m-0 mx-2">|</h6>
                     <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd2" class="m-0 fw-bold"></h6>
                 </div>
-                <button id="checkout" class="btnCheckout btn btn-secondary d-flex"><p class="m-0">Mi carrito<i class="bi bi-cart ms-2"></i></p></button>
+                <div class="d-flex">
+                    <button id="vuelveCompraFoot" class="btnCheckout btn btn-secondary d-flex me-2">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
+                    <button id="checkout" class="btnCheckout btn btn-secondary d-flex">Mi carrito<i class="bi bi-cart ms-2"></i></button>
+                </div>
+                
             </div>
         </footer>
 
@@ -92,7 +95,8 @@
             <div class="col-lg-3 col-sm-6 px-2 mb-3">
                 <div class="tarjProd card h-100">
                     <div class="card-body p-0 d-flex flex-column">
-                        <div class="d-flex flex-column h-100 justify-content-between">
+                        <div class="d-flex flex-column h-100 justify-content-between align-items-center">
+                            <img src="" alt="" class="imgTarj mt-3"></div>
                             <div class="p-2">
                                 <h6 class="nombreProducto text-center"></h6>
                             </div>

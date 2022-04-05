@@ -4,13 +4,15 @@
         "nombre":"Crema Facial Uso Diario 275ml",
         "descripcion":"Descripción",
         "categoria":"Cuidados de la piel",
-        "precioUn":3200
+        "precioUn":3200,
+        "imagen": "./img/crema.png"
     },
     {
         "nombre":"Crema Facial Uso Diario 125ml",
         "descripcion":"Descripción",
         "categoria":"Cuidados de la piel",
-        "precioUn":2200
+        "precioUn":2200,
+        "imagen": "./img/crema.png"
     },
     {
         "nombre":"Crema Facial Rejuvenecedora 125ml",

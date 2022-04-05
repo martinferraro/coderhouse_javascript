@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarJSON(); //Bases de datos desde archivo json
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
-    navMenu.addEventListener("click", e => { //Acción cuando seleccionan categoría de productos en el navbar
-        filtroMenu(e);
-        miCarritoOut(e);
-    });
+    navMenu.addEventListener("click", e => { filtroMenu(e); miCarritoOut(e) });
     checkout.addEventListener('click', miCarritoIn);
+    vuelveCompra.addEventListener('click', miCarritoOut);
+    vuelveCompraFoot.addEventListener('click', miCarritoOut);
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
         !arrayCarro.length ?
@@ -18,6 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }) : vaciarCarro();
     });
 });
+
+//Traigo la base de datos desde JSON
+async function cargarJSON() {
+    fetch('./js/bd.json')
+        .then((response) => response.json())
+        .then(function(baseDatos) {
+            listaProd = baseDatos.listaProd;
+            envios = baseDatos.envios;
+            seleccionTodo()
+        });
+}
 
 //Ocultar / Mostrar tarjetero o carrito
 miCarritoIn = () => {
@@ -34,17 +44,6 @@ function filtroMenu(e) {
     if(botonClick.tagName == 'BUTTON'){
         seleccionCat(botonClick.value)
     }
-}
-
-//Traigo la base de datos desde JSON
-async function cargarJSON() {
-    fetch('./js/bd.json')
-        .then((response) => response.json())
-        .then(function(baseDatos) {
-            listaProd = baseDatos.listaProd;
-            envios = baseDatos.envios;
-            seleccionTodo()
-        });
 }
 
 function addRemover(e) {
@@ -84,12 +83,12 @@ function vaciarTarjetero() {
 //Display tarjetas según array productos
 let tarjetasEnPantalla = () => {
     Object.values(listaFiltro).forEach(elemento => {
-        let {nombre:nom, precioUn:prec} = elemento; //Desestructuro el objeto y armo unos alias
+        let {nombre:nom, precioUn:prec, imagen:img} = elemento; //Desestructuro el objeto y armo unos alias
         let resultado;
+        tarjetaProducto.querySelector('.imgTarj').setAttribute('src', img);
         tarjetaProducto.querySelector('.nombreProducto').textContent = nom;
         tarjetaProducto.querySelector('.importe').textContent = '$' + parseInt(prec);
         tarjetaProducto.querySelector('.cantidad').textContent = 0
-
         //Esto reintegra los "checks" y las cantidades de las tarjetas que ya están en el carrito (porque el cambio de filtro las destruye)
         if (arrayCarro.length != 0) {
             resultado = arrayCarro.find(item => item.nombreEl === nom); //Busca si la tarjeta que se va a crear ya estaba agregada al carrito
@@ -97,7 +96,6 @@ let tarjetasEnPantalla = () => {
                 tarjetaProducto.querySelector('.cantidad').textContent = resultado.cantidadEl; //Levanta la cantidad del carrito y la vuelca a la tarjeta
             };
         };
-
         let tarj = tarjetaProducto.cloneNode(true); //Clono la tarjeta
         resultado != undefined && checkEnCarrito(tarj);
         fragment.appendChild(tarj); //Agrego la tarjeta al fragment
