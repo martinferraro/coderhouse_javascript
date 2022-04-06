@@ -17,7 +17,7 @@
         <header>
             <nav class="nav1 navbar navbar-expand-lg navbar-light fixed-top d-flex justify-content-between shadow px-3 py-2">
                 <!-- BARRA DE BÚSQUEDA -->
-                <div class="col-3">
+                <div class="col-lg-3 col-sm-5">
                     <input id="buscar" class="form-control p-1" type="search" placeholder="Buscar" aria-label="Busqueda">
                 </div>
                 <a class="navbar-brand text-end p-0 m-0"><h4 class="m-0 fw-bold">Nuestros productos</h4></a>
@@ -47,28 +47,29 @@
                 <!-- TABLA PRODUCTOS SELECCIONADOS -->
                 <div id="carrito" class="col-lg-8 col-sm-12" style="display: none;">
                     <div class="presupuesto d-flex flex-column card p-2 col-12">
-                        <table class="table">
+                        <table class="table textoSeparado">
                             <thead class="bg-light border-bottom-0">
-                                <th class="text-center"><h6 class="fw-bold">Producto</h6></th>
-                                <th class="text-center"><h6 class="fw-bold">Precio Unitario</h6></th>
-                                <th class="text-center"><h6 class="fw-bold">Cantidad</h6></th>
-                                <th class="text-center"><h6 class="fw-bold">Subtotal</h6></th>
+                                <th class="text-center"><h6 class="fw-bold m-0">Producto</h6></th>
+                                <th class="text-center"><h6 class="fw-bold m-0">Precio Unitario</h6></th>
+                                <th class="text-center"><h6 class="fw-bold m-0">Cantidad</h6></th>
+                                <th class="text-center"><h6 class="fw-bold m-0">Subtotal</h6></th>
                             </thead>
                             <tbody id="tabla" class="border-top"></tbody>
                         </table>
-                        <div class="d-flex justify-content-end bg-light border-top">
-                            <div class="col-3 p-2">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="m-0 fw-bold">Total compra:</h6>
-                                    <h6 id="sumaProd" class="m-0 fw-bold"></h6>
+                        <div class="finCarrito d-flex justify-content-end border-top p-0 mb-2">
+                            <div>
+                                <div class="textoSeparado d-flex flex-row w-100 p-2">
+                                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant" class="m-0 fw-bold"></h6>
+                                    <h6 class="m-0 mx-2">|</h6>
+                                    <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd" class="m-0 fw-bold"></h6>
                                 </div>
                             </div>
                         </div>
                         <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
                         <div class="d-flex justify-content-center col-12 mt-2">
-                            <button id="btnTabla" class="btnRemoverCarr btn btn-secondary align-items-center me-2"><i class="bi-trash3"></i></button>
-                            <button id="vuelveCompra" class="btnCheckoutCarr btn btn-secondary align-items-center me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
-                            <button id="comprar" class="btnComprarCarr btn btn-secondary align-items-center fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
+                            <button id="btnTabla" class="btnRemover btnMasTam btn btn-secondary align-items-center me-2"><i class="bi-trash3"></i></button>
+                            <button id="vuelveCompra" class="btnCheckout btnMasTam btn btn-secondary align-items-center me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
+                            <button id="comprar" class="btnCheckout btnMasTam btn btn-secondary align-items-center fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
                         </div>
                     </div>
                 </div>
@@ -77,8 +78,8 @@
 
         <footer class="footer fixed-bottom mt-auto px-3 py-2">
             <div class="container-fluid d-flex align-items-center justify-content-end p-0">
-                <div class="d-flex flex-row p-2 me-2">
-                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant" class="m-0 fw-bold"></h6>
+                <div class="textoSeparado d-flex flex-row p-2 me-2">
+                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant2" class="m-0 fw-bold"></h6>
                     <h6 class="m-0 mx-2">|</h6>
                     <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd2" class="m-0 fw-bold"></h6>
                 </div>
@@ -101,8 +102,8 @@
                                     <img src="" alt="" class="imgTarj">
                                 </div>
                             </div>
-                            <div class="p-2">
-                                <h6 class="nombreProducto text-center"></h6>
+                            <div class="py-3">
+                                <h6 class="nombreProducto text-center m-0 py-2"></h6>
                             </div>
                             <div id="enCarrito"></div>
                             <div class="d-flex justify-content-between text-end align-items-start px-3">

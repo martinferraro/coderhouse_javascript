@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     vuelveCompra.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
     vuelveCompraFoot.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
-    vacCarro.addEventListener('click', notificaCarroVacio) //Acción cuando hacen click en botón "Vaciar lista"
+    vacCarro.addEventListener('click', notificaCarroVacio); //Acción cuando hacen click en botón "Vaciar lista"
+    buscar.addEventListener('keyup', busqueda);
 });
 
 //Traigo la base de datos desde JSON
@@ -88,6 +89,16 @@ function addRemover(e) {
     armarTabla();
 }
 
+/* //Función de búsqueda
+function busqueda() {
+    const input = buscar.value.toUpperCase();
+    console.log(tarjetero);
+
+    const tarjeta = tarjetero.getElementsByClassName('tarjProd');
+    console.log(tarjeta);
+
+} */
+
 //Filtro productos según selección en menu, y llamo a crear las tarjetas según categoría.
 function seleccionCat(e) {
     e === 'Todas' ? seleccionTodo() : listaFiltro = listaProd.filter(cat => cat.categoria === e);
@@ -131,13 +142,6 @@ let tarjetasEnPantalla = () => {
     productos.appendChild(fragment); //Lleno el tarjetero con las tarjetas filtradas
 };
 
-/* //Función para ver si el item ya se encuentra en el carrito
-function comparaConCarro(e) {
-    let nom = e;
-    let resultado = arrayCarro.find(item => item.nombreEl === nom);
-    resultado != undefined && true;
-}; */
-
 //Productos seleccionados
 class ProductoSel {
     constructor(nombre, cantidad, precioUn, precioSubtot) {
@@ -147,9 +151,6 @@ class ProductoSel {
         this.precioSubtotEl = +precioSubtot;
     }
 }
-
-//Creo el array del carrito, con los productos seleccionados
-let arrayCarro = [];
 
 //Si el producto no existe en el carrito, lo agrega. Si ya existe, suma una unidad y modifica el subtotal del producto.
 function sumarProductoALista(e) {
@@ -311,7 +312,8 @@ function precioProductosCarro() {
 
 function cantidadProductosCarro() {
     cantTot = arrayCarro.reduce((acc, val) => acc + val.cantidadEl, 0);
-    sumaCant.innerHTML = (cantTot); //Display de cantidad total de productos en HTML
+    sumaCant.innerHTML = (cantTot);
+    sumaCant2.innerHTML = (cantTot); //Display de cantidad total de productos en HTML
 };
 
 //"Vaciar tabla" lo uso para reiniciar lo que muestra la tabla, sin resetear el local storage (para que no se me multipliquen los items de la tabla indefinidamente)
@@ -324,11 +326,16 @@ function vaciarTabla() {
 //Si el usuario quiere borrar toda la compra, incluso del local storage
 function vaciarCarro() {
     Swal.fire({
-        text: '¿Está seguro de que desea vaciar el carrito? Su compra ya no estará disponible.',
+        text: '¿Querés vaciar tu carrito? La compra ya no estará disponible.',
         icon: 'warning',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Vaciar carrito',
+        buttonStyling: false,
+        customClass: {
+            confirmButton: '.swal2-confirm.swal2-styled',
+            cancelButton: '.swal2-cancel.swal2-styled',
+        }
     }).then((result) => {
         if (result.isConfirmed) {
             vaciarTabla();
@@ -339,6 +346,7 @@ function vaciarCarro() {
             document.getElementById('sumaProd').innerHTML = precioTot;
             document.getElementById('sumaProd2').innerHTML = precioTot;
             document.getElementById('sumaCant').innerHTML = cantTot;
+            document.getElementById('sumaCant2').innerHTML = cantTot;
             tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
             miCarritoOut(); //Vuelvo al catálogo
         };

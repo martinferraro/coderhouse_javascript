@@ -10,9 +10,11 @@ const
     vacCarro = document.getElementById('btnTabla'),
     enCarrito = document.getElementById('enCarrito'),
     sumaCant = document.getElementById('sumaCant'),
+    sumaCant2 = document.getElementById('sumaCant2'),
     sumaProd = document.getElementById('sumaProd'),
     sumaProd2 = document.getElementById('sumaProd2'),
     navMenu = document.getElementById('navMenu'),
+    buscar = document.getElementById('buscar'),
     fragment = document.createDocumentFragment(), //Nodo offscreen para ir cargando las tarjetas
     Toast = Swal.mixin({
         toast: true,
@@ -26,10 +28,11 @@ const
     });
 
 let
+    arrayCarro = [],
     listaFiltro = {},
     listaprod = {},
     precioSubtot = 0,
     envios = {},
-    counterPromo = 0;
-    opacity = 0;
+    counterPromo = 0,
+    opacity = 0,
     intervalID = 0;

@@ -17,6 +17,10 @@ h4, h6, p {
     color: $btnMenu;
 }
 
+h4, .textoSeparado {
+    letter-spacing: .1rem;
+}
+
 p {
     font-size: .9rem;
     letter-spacing: .1rem;
@@ -88,12 +92,15 @@ p {
     border: 0!important;
     border-radius: 5rem;
     font-size: .8rem;
-    &Menu, &ContCompra, &Checkout, &Comprar, &ComprarCarr, &CheckoutCarr {
+    &Menu, &ContCompra, &Checkout, &Comprar {
         &:hover, &:focus {
             cursor: pointer;
             background-color: lighten($btnMenu, 10%);
         }
     };
+    &Menu, &Checkout {
+        letter-spacing: .1rem;
+    }
     &Add {
         background-color: darken($bgNav2, 20%);
         font-size: 1rem;
@@ -102,7 +109,7 @@ p {
             background-color: $btnAgregar;
         }
     };
-    &Remover, &RemoverCarr {
+    &Remover {
         background-color: $btnRemover;
         text-align: center;
         font-size: 1rem;
@@ -111,6 +118,33 @@ p {
             font-size: 1rem;
         }
     }
+    &MasTam {
+        font-size: 1rem;
+    }
+}
+
+.swal2-confirm.swal2-styled {
+    border: 0!important;
+    border-radius: 5rem!important;
+    background-color: $btnRemover!important;
+    text-align: center!important;
+    font-size: 1rem!important;
+    font-weight: normal!important;
+    color: white!important;
+}
+
+.swal2-cancel.swal2-styled {
+    border: 0!important;
+    border-radius: 5rem!important;
+    background-color: $btnMenu!important;
+    text-align: center!important;
+    font-size: 1rem!important;
+    font-weight: bold!important;
+    color: white!important;
+}
+
+.nombreProducto, .finCarrito {
+    background-color: lighten($bgNav2, 15%);
 }
 
 .bi-check-circle-fill {
