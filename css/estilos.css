@@ -80,7 +80,7 @@ p {
   -webkit-filter: drop-shadow(5px 5px 2px #18181880);
 }
 
-.btn {
+.btn, .swal2-confirm.swal2-styled {
   background-color: #69447c;
   color: white;
   border: 0 !important;
@@ -89,30 +89,47 @@ p {
   font-weight: bold;
 }
 
-.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
+.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus, .swal2-confirm.swal2-styledMenu:hover, .swal2-confirm.swal2-styledMenu:focus, .swal2-confirm.swal2-styledContCompra:hover, .swal2-confirm.swal2-styledContCompra:focus, .swal2-confirm.swal2-styledCheckout:hover, .swal2-confirm.swal2-styledCheckout:focus, .swal2-confirm.swal2-styledComprar:hover, .swal2-confirm.swal2-styledComprar:focus {
   cursor: pointer;
   background-color: #85569d;
 }
 
-.btnMenuCarr, .btnContCompraCarr, .btnCheckoutCarr, .btnComprarCarr {
+.btnMenuCarr, .btnContCompraCarr, .btnCheckoutCarr, .btnComprarCarr, .swal2-confirm.swal2-styledMenuCarr, .swal2-confirm.swal2-styledContCompraCarr, .swal2-confirm.swal2-styledCheckoutCarr, .swal2-confirm.swal2-styledComprarCarr {
   font-size: 1rem;
 }
 
-.btnAdd {
+.btnAdd, .swal2-confirm.swal2-styledAdd {
   background-color: #b37aa7;
   color: white;
 }
 
-.btnAdd:hover, .btnAdd:focus {
+.btnAdd:hover, .btnAdd:focus, .swal2-confirm.swal2-styledAdd:hover, .swal2-confirm.swal2-styledAdd:focus {
   background-color: #39804b;
 }
 
-.btnRemover {
+.btnRemover, .swal2-confirm.swal2-styledRemover {
   background-color: #949494;
   color: white;
 }
 
-.btnRemoverCarr {
+.btnRemoverCarr, .swal2-confirm.swal2-styledRemoverCarr {
+  font-size: 1rem;
+}
+
+.swal2-confirm.swal2-styled {
+  background-color: #949494;
+  color: white;
+  border: 0;
+  border-radius: 5rem;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.swal2-cancel.swal2-styled {
+  background-color: #69447c;
+  color: white;
+  border: 0;
+  border-radius: 5rem;
   font-size: 1rem;
 }
 

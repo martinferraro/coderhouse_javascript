@@ -73,7 +73,7 @@ p {
     -webkit-filter: drop-shadow(5px 5px 2px #18181880);
 }
 
-.btn {
+.btn, .swal2-confirm.swal2-styled {
     background-color: $btnMenu;
     color: white;
     border: 0!important;
@@ -103,6 +103,23 @@ p {
             font-size: 1rem;
         }
     }
+}
+
+.swal2-confirm.swal2-styled {
+    background-color: $btnRemover;
+    color: white;
+    border: 0;
+    border-radius: 5rem;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.swal2-cancel.swal2-styled {
+    background-color: $btnMenu;
+    color: white;
+    border: 0;
+    border-radius: 5rem;
+    font-size: 1rem;
 }
 
 .bi-check-circle-fill {
