@@ -19,6 +19,7 @@ h4, h6, p {
 
 p {
     font-size: .9rem;
+    letter-spacing: .1rem;
 }
 
 .nav1 {
@@ -53,8 +54,16 @@ p {
     box-shadow: .2rem .2rem .2rem #35353548;
 }
 
+.contGenProd {
+    padding: 1rem!important;
+}
+
+.tarjetero {
+    margin-bottom: 2rem;
+}
+
 .presupuesto {
-    margin-bottom: 58px;
+    margin-bottom: 3rem;
 }
 
 .contImgTarj {
@@ -79,25 +88,24 @@ p {
     border: 0!important;
     border-radius: 5rem;
     font-size: .8rem;
-    font-weight: bold;
-    &Menu, &ContCompra, &Checkout, &Comprar {
+    &Menu, &ContCompra, &Checkout, &Comprar, &ComprarCarr, &CheckoutCarr {
         &:hover, &:focus {
             cursor: pointer;
             background-color: lighten($btnMenu, 10%);
         }
-        &Carr {
-            font-size: 1rem;
-        }
     };
     &Add {
         background-color: darken($bgNav2, 20%);
+        font-size: 1rem;
         color: white;
         &:hover, &:focus {
             background-color: $btnAgregar;
         }
     };
-    &Remover {
+    &Remover, &RemoverCarr {
         background-color: $btnRemover;
+        text-align: center;
+        font-size: 1rem;
         color: white;
         &Carr {
             font-size: 1rem;

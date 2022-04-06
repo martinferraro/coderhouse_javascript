@@ -39,13 +39,13 @@
         </header>
 
         <main>
-            <div class="container-fluid d-flex flex-column align-items-center my-2 overflow-auto">
+            <div class="contGenProd container-fluid d-flex flex-column align-items-center p-0 overflow-auto">
                 <!-- TARJETAS PRODUCTOS -->
-                <div id="tarjetero" class="container-fluid col-12 p-2">
+                <div id="tarjetero" class="tarjetero container-fluid col-12 p-0">
                     <div class="producto row" id="producto"></div>
                 </div>
                 <!-- TABLA PRODUCTOS SELECCIONADOS -->
-                <div id="carrito" class="d-flex flex-column col-lg-8 col-sm-12 mt-2" style="visibility: hidden;">
+                <div id="carrito" class="col-lg-8 col-sm-12" style="display: none;">
                     <div class="presupuesto d-flex flex-column card p-2 col-12">
                         <table class="table">
                             <thead class="bg-light border-bottom-0">
@@ -66,9 +66,9 @@
                         </div>
                         <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
                         <div class="d-flex justify-content-center col-12 mt-2">
-                            <button id="btnTabla" class="btnRemoverCarr btn btn-secondary me-2"><i class="bi-trash3"></i></button>
-                            <button id="vuelveCompra" class="btnCheckoutCarr btn btn-secondary d-flex me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
-                            <button id="comprar" class="btnComprarCarr btn btn-secondary fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
+                            <button id="btnTabla" class="btnRemoverCarr btn btn-secondary align-items-center me-2"><i class="bi-trash3"></i></button>
+                            <button id="vuelveCompra" class="btnCheckoutCarr btn btn-secondary align-items-center me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
+                            <button id="comprar" class="btnComprarCarr btn btn-secondary align-items-center fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
                         </div>
                     </div>
                 </div>

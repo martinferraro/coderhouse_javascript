@@ -12,6 +12,7 @@ h4, h6, p {
 
 p {
   font-size: .9rem;
+  letter-spacing: .1rem;
 }
 
 .nav1 {
@@ -54,8 +55,16 @@ p {
           box-shadow: .2rem .2rem .2rem #35353548;
 }
 
+.contGenProd {
+  padding: 1rem !important;
+}
+
+.tarjetero {
+  margin-bottom: 2rem;
+}
+
 .presupuesto {
-  margin-bottom: 58px;
+  margin-bottom: 3rem;
 }
 
 .contImgTarj {
@@ -86,20 +95,16 @@ p {
   border: 0 !important;
   border-radius: 5rem;
   font-size: .8rem;
-  font-weight: bold;
 }
 
-.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
+.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus, .btnComprarCarr:hover, .btnComprarCarr:focus, .btnCheckoutCarr:hover, .btnCheckoutCarr:focus {
   cursor: pointer;
   background-color: #85569d;
 }
 
-.btnMenuCarr, .btnContCompraCarr, .btnCheckoutCarr, .btnComprarCarr {
-  font-size: 1rem;
-}
-
 .btnAdd {
   background-color: #b37aa7;
+  font-size: 1rem;
   color: white;
 }
 
@@ -107,12 +112,14 @@ p {
   background-color: #39804b;
 }
 
-.btnRemover {
+.btnRemover, .btnRemoverCarr {
   background-color: #949494;
+  text-align: center;
+  font-size: 1rem;
   color: white;
 }
 
-.btnRemoverCarr {
+.btnRemoverCarr, .btnRemoverCarrCarr {
   font-size: 1rem;
 }
 

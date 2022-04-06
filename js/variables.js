@@ -31,3 +31,5 @@ let
     precioSubtot = 0,
     envios = {},
     counterPromo = 0;
+    opacity = 0;
+    intervalID = 0;
