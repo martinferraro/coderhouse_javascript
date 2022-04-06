@@ -13,20 +13,12 @@ $bgNav2: #d8bbd2;
 $bgTarj: #fafafa;
 
 /* GENERAL */
-h4 {
-    color: $btnMenu;
-}
-
-h6 {
+h4, h6, p {
     color: $btnMenu;
 }
 
 p {
     font-size: .9rem;
-}
-
-main > div > p {
-    color: #465964;
 }
 
 .nav1 {
@@ -45,26 +37,40 @@ main > div > p {
     padding-top: 60px!important;
 }
 
-.tarjProd {
+.navbar-collapse.collapsing,
+.navbar-collapse.show {
+    padding-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tarjProd, .presupuesto, .swal2-popup.swal2-modal.swal2-show, .swal2-popup.swal2-toast.swal2-show {
+    color: $btnMenu;
     border-color: $bgNav2;
     background-color: $bgTarj;
     border-radius: 1.5rem;
-    box-shadow: .2rem .2rem .3rem #bdbdbd;
+    box-shadow: .2rem .2rem .2rem #35353548;
 }
 
-.imgTarj {
+.presupuesto {
+    margin-bottom: 58px;
+}
+
+.contImgTarj {
     border-radius: 50%;
     height: 12rem;
     width: 12rem;
     background: radial-gradient(closest-side, darken($bgNav2, 20%), lighten($bgNav2, 15%));
     object-fit: cover;
+    &:hover {
+        transform: scale(1.25);
+        transition: transform 200ms ease-in-out;
+    }
 }
 
-.presupuesto {
-    border-color: $bgNav2;
-    background-color: $bgTarj;
-    box-shadow: .2rem .2rem .3rem #bdbdbd;
-    margin-bottom: 58px;
+.imgTarj {
+    -webkit-filter: drop-shadow(5px 5px 2px #18181880);
 }
 
 .btn {

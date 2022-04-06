@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
     navMenu.addEventListener("click", e => { filtroMenu(e); miCarritoOut(e) });
     checkout.addEventListener('click', miCarritoIn);
-    vuelveCompra.addEventListener('click', miCarritoOut);
-    vuelveCompraFoot.addEventListener('click', miCarritoOut);
+    vuelveCompra.addEventListener('click', e => { filtroMenu(e); miCarritoOut(e) });
+    vuelveCompraFoot.addEventListener('click', e => { filtroMenu(e); miCarritoOut(e) });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
         !arrayCarro.length ?
