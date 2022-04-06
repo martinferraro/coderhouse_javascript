@@ -6,16 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     vuelveCompra.addEventListener('click', e => { filtroMenu(e); miCarritoOut(e) });
     vuelveCompraFoot.addEventListener('click', e => { filtroMenu(e); miCarritoOut(e) });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
-    vacCarro.addEventListener('click', e => { //Acción cuando hacen click en botón "Vaciar lista"
-        !arrayCarro.length ?
-        Swal.fire({
-            text: 'El carrito se encuentra vacío',
-            icon: 'info',
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-        }) : vaciarCarro();
-    });
+    vacCarro.addEventListener('click', notificaCarroVacio) //Acción cuando hacen click en botón "Vaciar lista"
 });
 
 //Traigo la base de datos desde JSON
@@ -31,12 +22,27 @@ async function cargarJSON() {
 
 //Ocultar / Mostrar tarjetero o carrito
 miCarritoIn = () => {
-    tarjetero.style.display = 'none',
-    carrito.style.visibility = 'visible';
+    if (arrayCarro.length == 0) {
+        notificaCarroVacio();
+    } else {
+        tarjetero.style.display = 'none';
+        carrito.style.visibility = 'visible';
+    }
 };
 miCarritoOut = () => {
     tarjetero.style.display = 'block',
     carrito.style.visibility = 'hidden';
+};
+
+function notificaCarroVacio() {
+    !arrayCarro.length ?
+        Swal.fire({
+            text: 'El carrito se encuentra vacío',
+            icon: 'info',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+        }) : vaciarCarro();
 };
 
 function filtroMenu(e) {
@@ -310,6 +316,7 @@ function vaciarCarro() {
             document.getElementById('sumaProd2').innerHTML = precioTot;
             document.getElementById('sumaCant').innerHTML = cantTot;
             tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
+            miCarritoOut(); //Vuelvo al catálogo
         };
     });
 };
