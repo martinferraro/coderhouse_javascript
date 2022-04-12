@@ -33,14 +33,23 @@
         <!-- BARRA ENCABEZADO -->
         <header>
             <nav class="nav1 navbar navbar-expand-lg navbar-light fixed-top d-flex justify-content-between shadow px-3 py-2">
-                <!-- BARRA DE BÚSQUEDA -->
-                <div class="col-lg-3 col-sm-5">
+                <div class="col-lg-3 col-sm-5"> <!-- BARRA DE BÚSQUEDA -->
                     <input id="buscar" class="form-control p-1" type="search" placeholder="Buscar" aria-label="Busqueda">
                 </div>
-                <a class="navbar-brand p-0 m-0"><button id="btnHome" class="btnHome d-flex text-end align-items-center"><h5 class="m-0">Home</h5><i class="bi bi-house-fill ms-2"></i></button></a>
+                <div class="d-flex align-items-center">
+                    <h6 id="sumaProd2" class="textoSeparado m-0 me-2 fw-bold"></h6>
+                    <div>
+                        <h6 id="sumaCant2" class="numProd d-flex justify-content-center align-items-center m-0 fw-bold"></h6>
+                        <i id="btnCart" class="bi bi-cart-fill"></i>
+                    </div>
+                    <h6 class="separador mx-2">|</h6>
+                    <i id="vuelveCompra" class="bi bi-book-fill"></i>
+                    <h6 class="separador mx-2">|</h6>
+                    <i id="btnHome" class="bi bi-house-fill"></i>
+                </div>
             </nav>
             <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
-                <div class="d-flexcol-9 p-0">
+                <div class="p-0">
                     <button class="navbar-toggler bg-light bg-opacity-25 navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -76,7 +85,7 @@
                         <div class="finCarrito d-flex justify-content-end border-top p-0 mb-2">
                             <div>
                                 <div class="textoSeparado d-flex flex-row w-100 p-2">
-                                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant" class="m-0 fw-bold"></h6>
+                                    <h6 class="m-0 me-2">Productos:</h6><h6 id="sumaCant" class="m-0 fw-bold"></h6>
                                     <h6 class="m-0 mx-2">|</h6>
                                     <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd" class="m-0 fw-bold"></h6>
                                 </div>
@@ -84,29 +93,13 @@
                         </div>
                         <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
                         <div class="d-flex justify-content-center col-12 mt-2">
-                            <button id="btnTabla" class="btnRemover btnMasTam btn btn-secondary align-items-center me-2"><i class="bi-trash3"></i></button>
-                            <button id="vuelveCompra" class="btnCheckout btnMasTam btn btn-secondary align-items-center me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
+                            <button id="btnTabla" class="btnRemover btnMasTam textoSeparado btn btn-secondary align-items-center me-2">Vaciar carrito<i class="bi-trash3 ms-2"></i></button>
                             <button id="comprar" class="btnCheckout btnMasTam btn btn-secondary align-items-center fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-
-        <footer class="footer fixed-bottom mt-auto px-3 py-2">
-            <div class="container-fluid d-flex align-items-center justify-content-end p-0">
-                <div class="textoSeparado d-flex flex-row p-2 me-2">
-                    <h6 class="m-0 me-2">Productos en carrito:</h6><h6 id="sumaCant2" class="m-0 fw-bold"></h6>
-                    <h6 class="m-0 mx-2">|</h6>
-                    <h6 class="m-0 me-2">Importe:</h6><h6 id="sumaProd2" class="m-0 fw-bold"></h6>
-                </div>
-                <div class="d-flex">
-                    <button id="vuelveCompraFoot" class="btnCheckout btn btn-secondary d-flex me-2" value="Todas">Catálogo<i class="bi bi-card-checklist ms-2"></i></button>
-                    <button id="checkout" class="btnCheckout btn btn-secondary d-flex">Mi carrito<i class="bi bi-cart ms-2"></i></button>
-                </div>
-                
-            </div>
-        </footer>
     </div>
 
     <!-- TEMPLATE TARJETA DEL PRODUCTO -->

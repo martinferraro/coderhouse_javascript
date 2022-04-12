@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btnHome.addEventListener('click', muestraPortada);
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
     navMenu.addEventListener("click", e => { filtroMenu(e); miCarritoOut(); });
-    checkout.addEventListener('click', miCarritoIn);
+    btnCart.addEventListener('click', miCarritoIn);
     vuelveCompra.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
-    vuelveCompraFoot.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', notificaCarroVacio); //Acción cuando hacen click en botón "Vaciar lista"
     //buscar.addEventListener('keyup', busqueda);
@@ -27,6 +26,7 @@ async function cargarJSON() {
 
 //Mostrar portada, ocultar shop
 function muestraPortada() {
+    sumaCant2.style.visibility = 'hidden';
     shop.style.display = 'none';
     let opacity = 0
     portada.style.opacity = opacity;
@@ -113,6 +113,7 @@ function filtroMenu(e) {
 function addRemover(e) {
     let tarjSel = e.target.parentElement.parentElement;
     if (e.target.classList.contains('btnAdd')) {
+        sumaCant2.style.visibility = 'visible';
         sumarProductoALista(tarjSel);
         checkEnCarrito(tarjSel);
         notificaSumaProd(tarjSel);
@@ -249,7 +250,7 @@ function notificaSumaProd(e) {
         Toast.fire({
             icon: 'success',
             title: `${nomItem} en carrito`,
-            position: 'top-end'
+            position: 'bottom-end'
         });
     if (precioTot > 10000 && counterPromo == 1) {
         accedistePromo();
@@ -305,7 +306,7 @@ function notificaRemueveProd(e) {
         Toast.fire({
             icon: 'error',
             title: `${nomItem} fuera del carrito`,
-            position: 'top-end'
+            position: 'bottom-end'
         });
 };
 
@@ -317,7 +318,7 @@ function armarTabla() {
         let fila = `<tr>
                         <td class="nombreProducto align-middle">${carro[i].nombreEl}</td>
                         <td class="text-center align-middle">$${carro[i].precioUnEl}</td>
-                        <td class="text-center align-middle d-flex justify-content-between align-items-center"><button class="btnRemover btn btn-secondary btn-sm bi-dash-circle me-2"></button>${carro[i].cantidadEl}<button class="btnAdd btn btn-secondary btn-sm bi-plus-circle ms-2"></button></td>
+                        <td class="text-center align-middle justify-content-between align-items-center"><button class="btnRemover btn btn-secondary btn-sm bi-dash-circle me-2"></button>${carro[i].cantidadEl}<button class="btnAdd btn btn-secondary btn-sm bi-plus-circle ms-2"></button></td>
                         <td class="text-end align-middle">$${carro[i].precioSubtotEl}</td>
                     </tr>`;
         tabla.innerHTML += fila
@@ -382,6 +383,7 @@ function vaciarCarro() {
             document.getElementById('sumaProd2').innerHTML = precioTot;
             document.getElementById('sumaCant').innerHTML = cantTot;
             document.getElementById('sumaCant2').innerHTML = cantTot;
+            sumaCant2.style.visibility = 'hidden';
             Swal.fire({
                 text: 'Vaciaste el carrito',
                 icon: 'info',

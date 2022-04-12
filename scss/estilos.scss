@@ -66,15 +66,24 @@ body {
 }
 
 .contGenProd {
-    padding: 1rem!important;
-}
-
-.tarjetero {
-    margin-bottom: 2rem;
+    padding: 1rem 1rem 0 1rem!important;
 }
 
 .presupuesto {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+}
+
+.numProd {
+    position: absolute;
+    margin-left: .9rem!important;
+    font-size: .8rem;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    margin: 0;
+    background-color: $bgTarj;
+    background-blend-mode: luminosity;
+    border-radius: 100%;
 }
 
 .contImgTarj {
@@ -150,15 +159,6 @@ body {
     -webkit-filter: drop-shadow(5px 5px 2px #18181880);
 }
 
-.btnHome {
-    background-color: transparent;
-    border: none;
-}
-
-.bi-house-fill:hover {
-    transform: scale(1.2);
-}
-
 .btn {
     background-color: $btnMenu;
     color: white;
@@ -220,10 +220,18 @@ body {
     background-color: lighten($bgNav2, 15%);
 }
 
-.bi-house-fill {
-    font-size: 1.8rem;
+.bi-house-fill, .bi-book-fill, .bi-cart-fill {
+    font-size: 1.5rem;
     color: $btnMenu;
     padding: 0;
+    &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    };
+}
+
+.bi-dash-circle, .bi-plus-circle {
+    font-size: .8rem;
 }
 
 .bi-check-circle-fill {
@@ -240,4 +248,9 @@ body {
 
 @keyframes pop{
     50%  {transform: scale(1.2);}
+}
+
+.separador {
+    color: $bgNav2;
+    font-size: 1.8rem;
 }

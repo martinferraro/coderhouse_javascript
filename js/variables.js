@@ -8,9 +8,8 @@ const
     carrito = document.getElementById('carrito'),
     tarjetaProducto = document.getElementById('tarjetaProducto').content, //Template para cada tarjeta de los productos
     tabla = document.getElementById('tabla'),
-    checkout = document.getElementById('checkout'),
+    btnCart = document.getElementById('btnCart'),
     vuelveCompra = document.getElementById('vuelveCompra'),
-    vuelveCompraFoot = document.getElementById('vuelveCompraFoot'),
     vacCarro = document.getElementById('btnTabla'),
     enCarrito = document.getElementById('enCarrito'),
     sumaCant = document.getElementById('sumaCant'),
