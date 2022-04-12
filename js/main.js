@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     cargarJSON(); //Bases de datos desde archivo json
+    btnCrema.addEventListener('click', muestraShop);
+    btnHome.addEventListener('click', muestraPortada);
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
     navMenu.addEventListener("click", e => { filtroMenu(e); miCarritoOut(); });
     checkout.addEventListener('click', miCarritoIn);
@@ -7,23 +9,57 @@ document.addEventListener('DOMContentLoaded', () => {
     vuelveCompraFoot.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', notificaCarroVacio); //Acción cuando hacen click en botón "Vaciar lista"
-    buscar.addEventListener('keyup', busqueda);
+    //buscar.addEventListener('keyup', busqueda);
 });
+
+window.onload = muestraPortada();
 
 //Traigo la base de datos desde JSON
 async function cargarJSON() {
-    fetch('./js/bd.json')
-        .then((response) => response.json())
-        .then(function(baseDatos) {
-            listaProd = baseDatos.listaProd;
-            envios = baseDatos.envios;
-            seleccionTodo()
-        });
+    await fetch('./js/bd.json')
+            .then((response) => response.json())
+            .then(function(baseDatos) {
+                listaProd = baseDatos.listaProd;
+                envios = baseDatos.envios;
+                seleccionTodo();
+            });
 }
+
+//Mostrar portada, ocultar shop
+function muestraPortada() {
+    shop.style.display = 'none';
+    let opacity = 0
+    portada.style.opacity = opacity;
+    portada.style.display = 'block';
+    let intervalID = setInterval(function() {
+        if (opacity < 1) {
+            opacity = opacity + 0.1
+            portada.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }, 50);
+};
+
+//Ocultar portada, mostrar shop
+function muestraShop() {
+    portada.style.display = 'none';
+    let opacity = 0
+    shop.style.opacity = opacity;
+    shop.style.display = 'block';
+    let intervalID = setInterval(function() {
+        if (opacity < 1) {
+            opacity = opacity + 0.1
+            shop.style.opacity = opacity;
+        } else {
+            clearInterval(intervalID);
+        }
+    }, 50);
+};
 
 //Fade in tarjetero
 function miCarritoOut() {
-    let opacity = 0;
+    let opacity = 0
     tarjetero.style.opacity = opacity;
     tarjetero.style.display = 'block';
     carrito.style.display = 'none';
@@ -42,7 +78,7 @@ miCarritoIn = () => {
     if (arrayCarro.length == 0) {
         notificaCarroVacio();
     } else {
-        let opacity = 0;
+        let opacity = 0
         tarjetero.style.display = 'none';
         carrito.style.opacity = opacity;
         carrito.style.display = 'block';
@@ -331,7 +367,6 @@ function vaciarCarro() {
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Vaciar carrito',
-        buttonStyling: false,
         customClass: {
             confirmButton: '.swal2-confirm.swal2-styled',
             cancelButton: '.swal2-cancel.swal2-styled',
@@ -347,8 +382,16 @@ function vaciarCarro() {
             document.getElementById('sumaProd2').innerHTML = precioTot;
             document.getElementById('sumaCant').innerHTML = cantTot;
             document.getElementById('sumaCant2').innerHTML = cantTot;
-            tarjetasEnPantalla(); //Llamo a esta función para remover todos los "check" de las tarjetas
-            miCarritoOut(); //Vuelvo al catálogo
+            Swal.fire({
+                text: 'Vaciaste el carrito',
+                icon: 'info',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            }).then(
+                tarjetasEnPantalla(), //Llamo a esta función para remover todos los "check" de las tarjetas
+                miCarritoOut() //Vuelvo al catálogo
+            );
         };
     });
 };

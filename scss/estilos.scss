@@ -7,17 +7,16 @@
 /* COLORES */
 $btnMenu: #69447c;
 $btnAgregar: #39804b;
-$btnGen: #30748f;
 $btnRemover: #949494;
 $bgNav2: #d8bbd2;
 $bgTarj: #fafafa;
 
 /* GENERAL */
-h4, h6, p {
+h4, h5, h6, p {
     color: $btnMenu;
 }
 
-h4, .textoSeparado {
+h4, h5, .textoSeparado {
     letter-spacing: .1rem;
 }
 
@@ -26,10 +25,18 @@ p {
     letter-spacing: .1rem;
 }
 
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background: radial-gradient(ellipse at bottom, #8d8cd2, transparent),
+                radial-gradient(ellipse at top, #d09ece, transparent);
+}
+
 .nav1 {
     background-color: #d7c9df;
     z-index: 1;
-    height: 50px;
 }
 
 .footer {
@@ -39,7 +46,7 @@ p {
 
 .nav2 {
     background-color: $bgNav2;
-    padding-top: 60px!important;
+    padding-top: 68px!important;
 }
 
 .navbar-collapse.collapsing,
@@ -82,8 +89,74 @@ p {
     }
 }
 
+.contPortada {
+    position: absolute;
+    right: 11rem;
+    top: 5rem;
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.imgPortadaLogo {
+    z-index: 1;
+    height: 7rem;
+    width: auto;
+    -webkit-filter: drop-shadow(3px 3px 2px #18181880);
+}
+
+.imgPortadaMod {
+    position: absolute;
+    left: 4rem;
+    bottom: 0;
+    height: 80%;
+    width: auto;
+    -webkit-filter: drop-shadow(5px 5px 15px #ffffff);
+}
+
+.contPortadaCrema {
+    position: relative;
+    height: 4rem;
+    width: 30rem;
+    background-color: $bgNav2;
+    border-radius: 20rem;
+}
+
+.bloqueColor {
+    width: 30%;
+    height: 100vh;
+    background-color: $bgNav2;
+}
+
+.imgPortadaCrema {
+    position: absolute;
+    right: 1rem;
+    top: -4rem;
+    height: auto;
+    width: 9rem;
+    transform: rotate(-20deg) scale(1.2);
+    -webkit-filter: drop-shadow(3px 3px 2px #1818184a);
+    &:hover {
+        transform: rotate(-20deg) scale(1.5);
+        transition: transform 200ms ease-in-out;
+        cursor: pointer;
+    }
+}
+
 .imgTarj {
     -webkit-filter: drop-shadow(5px 5px 2px #18181880);
+}
+
+.btnHome {
+    background-color: transparent;
+    border: none;
+}
+
+.bi-house-fill:hover {
+    transform: scale(1.2);
 }
 
 .btn {
@@ -145,6 +218,12 @@ p {
 
 .nombreProducto, .finCarrito {
     background-color: lighten($bgNav2, 15%);
+}
+
+.bi-house-fill {
+    font-size: 1.8rem;
+    color: $btnMenu;
+    padding: 0;
 }
 
 .bi-check-circle-fill {

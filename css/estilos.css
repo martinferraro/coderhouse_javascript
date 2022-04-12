@@ -6,11 +6,11 @@
 
 /* COLORES */
 /* GENERAL */
-h4, h6, p {
+h4, h5, h6, p {
   color: #69447c;
 }
 
-h4, .textoSeparado {
+h4, h5, .textoSeparado {
   letter-spacing: .1rem;
 }
 
@@ -19,10 +19,17 @@ p {
   letter-spacing: .1rem;
 }
 
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at bottom, #8d8cd2, transparent), radial-gradient(ellipse at top, #d09ece, transparent);
+}
+
 .nav1 {
   background-color: #d7c9df;
   z-index: 1;
-  height: 50px;
 }
 
 .footer {
@@ -32,7 +39,7 @@ p {
 
 .nav2 {
   background-color: #d8bbd2;
-  padding-top: 60px !important;
+  padding-top: 68px !important;
 }
 
 .navbar-collapse.collapsing,
@@ -89,8 +96,90 @@ p {
   transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
 }
 
+.contPortada {
+  position: absolute;
+  right: 11rem;
+  top: 5rem;
+  height: 22rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+.imgPortadaLogo {
+  z-index: 1;
+  height: 7rem;
+  width: auto;
+  -webkit-filter: drop-shadow(3px 3px 2px #18181880);
+}
+
+.imgPortadaMod {
+  position: absolute;
+  left: 4rem;
+  bottom: 0;
+  height: 80%;
+  width: auto;
+  -webkit-filter: drop-shadow(5px 5px 15px #ffffff);
+}
+
+.contPortadaCrema {
+  position: relative;
+  height: 4rem;
+  width: 30rem;
+  background-color: #d8bbd2;
+  border-radius: 20rem;
+}
+
+.bloqueColor {
+  width: 30%;
+  height: 100vh;
+  background-color: #d8bbd2;
+}
+
+.imgPortadaCrema {
+  position: absolute;
+  right: 1rem;
+  top: -4rem;
+  height: auto;
+  width: 9rem;
+  -webkit-transform: rotate(-20deg) scale(1.2);
+          transform: rotate(-20deg) scale(1.2);
+  -webkit-filter: drop-shadow(3px 3px 2px #1818184a);
+}
+
+.imgPortadaCrema:hover {
+  -webkit-transform: rotate(-20deg) scale(1.5);
+          transform: rotate(-20deg) scale(1.5);
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  cursor: pointer;
+}
+
 .imgTarj {
   -webkit-filter: drop-shadow(5px 5px 2px #18181880);
+}
+
+.btnHome {
+  background-color: transparent;
+  border: none;
+}
+
+.bi-house-fill:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .btn {
@@ -157,6 +246,12 @@ p {
 
 .nombreProducto, .finCarrito {
   background-color: #f4ecf2;
+}
+
+.bi-house-fill {
+  font-size: 1.8rem;
+  color: #69447c;
+  padding: 0;
 }
 
 .bi-check-circle-fill {

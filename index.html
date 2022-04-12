@@ -12,7 +12,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
-    <body>
+
+<body>
+    <div id="paginaPortada">
+        <div class="contPortada">
+            <div class="contImgLogo">
+                <img class="imgPortadaLogo"  src="/img/df_logo.svg" alt="logo">
+            </div>
+            <div class="contPortadaCrema d-flex align-items-center ps-2">
+                <h4 class="m-0 p-4">Nuestros productos</h4>
+                <img id="btnCrema" class="imgPortadaCrema"  src="/img/crema_aplicada.png" alt="imagen portada">
+            </div>
+        </div>
+        <div class="contImgPortadaMod">
+            <img class="imgPortadaMod"  src="/img/modelo_portada.png" alt="imagen portada">
+        </div>
+        <div class="bloqueColor"></div>
+    </div>
+    <div id="paginaShop">
         <!-- BARRA ENCABEZADO -->
         <header>
             <nav class="nav1 navbar navbar-expand-lg navbar-light fixed-top d-flex justify-content-between shadow px-3 py-2">
@@ -20,7 +37,7 @@
                 <div class="col-lg-3 col-sm-5">
                     <input id="buscar" class="form-control p-1" type="search" placeholder="Buscar" aria-label="Busqueda">
                 </div>
-                <a class="navbar-brand text-end p-0 m-0"><h4 class="m-0 fw-bold">Nuestros productos</h4></a>
+                <a class="navbar-brand p-0 m-0"><button id="btnHome" class="btnHome d-flex text-end align-items-center"><h5 class="m-0">Home</h5><i class="bi bi-house-fill ms-2"></i></button></a>
             </nav>
             <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
                 <div class="d-flexcol-9 p-0">
@@ -90,43 +107,44 @@
                 
             </div>
         </footer>
+    </div>
 
-        <!-- TEMPLATE TARJETA DEL PRODUCTO -->
-        <template id="tarjetaProducto">
-            <div class="col-lg-3 col-sm-6 px-2 mb-3">
-                <div class="tarjProd card h-100">
-                    <div class="card-body p-0 d-flex flex-column">
-                        <div class="d-flex flex-column h-100 justify-content-between">
-                            <div class="d-flex justify-content-center">
-                                <div class="contImgTarj d-flex justify-content-center  mt-3">
-                                    <img src="" alt="" class="imgTarj">
-                                </div>
-                            </div>
-                            <div class="py-3">
-                                <h6 class="nombreProducto text-center m-0 py-2"></h6>
-                            </div>
-                            <div id="enCarrito"></div>
-                            <div class="d-flex justify-content-between text-end align-items-start px-3">
-                                <div class="d-flex flex-column justify-content-end col-9">
-                                    <p class="m-0">Precio unitario:</p>
-                                    <p class="m-0">Cantidad:</p>
-                                </div>
-                                <div class="d-flex flex-column justify-content-end col-3">
-                                    <p class="importe mb-0"></p>
-                                    <p class="cantidad mb-0"></p>
-                                </div>
+    <!-- TEMPLATE TARJETA DEL PRODUCTO -->
+    <template id="tarjetaProducto">
+        <div class="col-lg-3 col-sm-6 px-2 mb-3">
+            <div class="tarjProd card h-100">
+                <div class="card-body p-0 d-flex flex-column">
+                    <div class="d-flex flex-column h-100 justify-content-between">
+                        <div class="d-flex justify-content-center">
+                            <div class="contImgTarj d-flex justify-content-center  mt-3">
+                                <img src="" alt="" class="imgTarj">
                             </div>
                         </div>
-                        <div class="d-flex justify-content-around">
-                            <button class="btnRemover btn btn-secondary bi-dash-circle w-25 m-2 me-1"></button>
-                            <button class="btnAdd btn btn-secondary bi-plus-circle w-100 m-2 ms-1"></button>
+                        <div class="py-3">
+                            <h6 class="nombreProducto text-center m-0 py-2"></h6>
                         </div>
+                        <div id="enCarrito"></div>
+                        <div class="d-flex justify-content-between text-end align-items-start px-3">
+                            <div class="d-flex flex-column justify-content-end col-9">
+                                <p class="m-0">Precio unitario:</p>
+                                <p class="m-0">Cantidad:</p>
+                            </div>
+                            <div class="d-flex flex-column justify-content-end col-3">
+                                <p class="importe mb-0"></p>
+                                <p class="cantidad mb-0"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button class="btnRemover btn btn-secondary bi-dash-circle w-25 m-2 me-1"></button>
+                        <button class="btnAdd btn btn-secondary bi-plus-circle w-100 m-2 ms-1"></button>
                     </div>
                 </div>
             </div>
-        </template>
+        </div>
+    </template>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
 
 </html>

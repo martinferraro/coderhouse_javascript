@@ -1,4 +1,8 @@
 const
+    portada = document.getElementById('paginaPortada'),
+    shop = document.getElementById('paginaShop'),
+    btnCrema = document.getElementById('btnCrema'),
+    btnHome = document.getElementById('btnHome'),
     productos = document.getElementById('producto'),
     tarjetero = document.getElementById('tarjetero'),
     carrito = document.getElementById('carrito'),
@@ -34,5 +38,4 @@ let
     precioSubtot = 0,
     envios = {},
     counterPromo = 0,
-    opacity = 0,
     intervalID = 0;
