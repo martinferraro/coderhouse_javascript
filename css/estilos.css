@@ -151,7 +151,7 @@ body {
 .contPortadaCrema {
   position: relative;
   height: 4rem;
-  width: 30rem;
+  width: 26rem;
   background-color: #d8bbd2;
   border-radius: 20rem;
 }
@@ -165,9 +165,9 @@ body {
 .imgPortadaCrema {
   position: absolute;
   right: 1rem;
-  top: -4rem;
+  top: -2rem;
   height: auto;
-  width: 9rem;
+  width: 7rem;
   -webkit-transform: rotate(-20deg) scale(1.2);
           transform: rotate(-20deg) scale(1.2);
   -webkit-filter: drop-shadow(3px 3px 2px #1818184a);

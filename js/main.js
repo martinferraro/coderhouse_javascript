@@ -16,18 +16,18 @@ window.onload = muestraPortada();
 //Traigo la base de datos desde JSON
 async function cargarJSON() {
     await fetch('./js/bd.json')
-            .then((response) => response.json())
-            .then(function(baseDatos) {
-                listaProd = baseDatos.listaProd;
-                envios = baseDatos.envios;
-                seleccionTodo();
-            });
+        .then((response) => response.json())
+        .then(function(baseDatos) {
+            listaProd = baseDatos.listaProd;
+            envios = baseDatos.envios;
+            seleccionTodo();
+        });
 }
 
 //Mostrar portada, ocultar shop
 function muestraPortada() {
     shop.style.display = 'none';
-    let opacity = 0
+    let opacity = 0;
     portada.style.opacity = opacity;
     portada.style.display = 'block';
     let intervalID = setInterval(function() {
@@ -57,8 +57,8 @@ function muestraShop() {
 };
 
 //Fade in tarjetero
-function miCarritoOut() {
-    let opacity = 0
+const miCarritoOut = () => {
+    let opacity = 0;
     tarjetero.style.opacity = opacity;
     tarjetero.style.display = 'block';
     carrito.style.display = 'none';
@@ -73,7 +73,7 @@ function miCarritoOut() {
 }
 
 //Ocultar / Mostrar tarjetero o carrito
-miCarritoIn = () => {
+const miCarritoIn = () => {
     if (arrayCarro.length == 0) {
         notificaCarroVacio();
     } else {
@@ -91,7 +91,7 @@ miCarritoIn = () => {
     };
 };
 
-function notificaCarroVacio() {
+const notificaCarroVacio = () => {
     !arrayCarro.length ?
         Swal.fire({
             text: 'El carrito se encuentra vacío',
@@ -102,14 +102,14 @@ function notificaCarroVacio() {
         }) : vaciarCarro();
 };
 
-function filtroMenu(e) {
+const filtroMenu = (e) => {
     let botonClick = e.target;
     if(botonClick.tagName == 'BUTTON'){
         seleccionCat(botonClick.value)
     }
 }
 
-function addRemover(e) {
+const addRemover = (e) => {
     let tarjSel = e.target.parentElement.parentElement;
     if (e.target.classList.contains('btnAdd')) {
         sumaCant2.style.visibility = 'visible';
@@ -125,34 +125,34 @@ function addRemover(e) {
     armarTabla();
 }
 
-//Función de búsqueda por texto ingresado
-function busqueda() {
+//Función de búsqueda por search bar
+const busqueda = () => {
     listaFiltro = [];
     const input = buscar.value.toUpperCase();
-    
     for(let i = 0; i < listaProd.length; i++) {
         let nombre = listaProd[i].nombre.toUpperCase();
         if(nombre.includes(input)) {
             listaFiltro.push(listaProd[i]);
+
             tarjetasEnPantalla();
         }
     }
 }
 
 //Filtro productos según selección en menu, y llamo a crear las tarjetas según categoría.
-function seleccionCat(e) {
+const seleccionCat = (e) => {
     e === 'Todas' ? seleccionTodo() : listaFiltro = listaProd.filter(cat => cat.categoria === e);
     tarjetasEnPantalla();
 }
 
 //Muestra todos los productos del catálogo, llamando a las tarjetas en pantalla.
-function seleccionTodo() {
-    listaFiltro = listaProd
+const seleccionTodo = () => {
+    listaFiltro = listaProd;
     tarjetasEnPantalla();
 }
 
 //Esta función elimina los children del div id="producto", para reemplazarlos después con el nuevo filtro
-function vaciarTarjetero() {
+const vaciarTarjetero = () => {
     while (productos.firstChild) {
         productos.removeChild(productos.firstChild);
     }
@@ -193,7 +193,7 @@ class ProductoSel {
 }
 
 //Si el producto no existe en el carrito, lo agrega. Si ya existe, suma una unidad y modifica el subtotal del producto.
-function sumarProductoALista(e) {
+const sumarProductoALista = (e) => {
     item = buscaItem(e);
     indice = item[2];
     if (indice == -1) { //Si el item no está en el array del carrito, lo suma
@@ -214,13 +214,13 @@ function sumarProductoALista(e) {
     promocion();
 };
 
-function variacionCant(e) {
+const variacionCant = (e) => {
     item = buscaItem(e);
     indice = item[2];
     prod = arrayCarro[indice];
 }
 
-function buscaItem(e) {
+const buscaItem = (e) => {
     let nomItem = e.querySelector('.nombreProducto').textContent; //Levanto el nombre del producto a partir del nodo
     let coincidencias = arrayCarro.filter(ProductoSel => ProductoSel.nombreEl === nomItem).length;
     let indice = arrayCarro.findIndex(ProductoSel => ProductoSel.nombreEl === nomItem);
@@ -228,7 +228,7 @@ function buscaItem(e) {
 }
 
 //Incrementa la cantidad del item
-function sumaCantItem(e) {
+const sumaCantItem = (e) => {
     variacionCant(e);
     cantidad = prod.cantidadEl += 1;
     precioSubtot = prod.precioUnEl * cantidad;
@@ -238,14 +238,14 @@ function sumaCantItem(e) {
 }
 
 //Añade el ícono "check" al producto
-function checkEnCarrito(e) {
+const checkEnCarrito = (e) => {
     let check = e.querySelector('#enCarrito');
     let checkCont = `<i class="bi bi-check-circle-fill p-3"></i>`;
     check.innerHTML = checkCont;
 }
 
 //Toast notificación producto añadido al carrito
-function notificaSumaProd(e) {
+const notificaSumaProd = (e) => {
     item = buscaItem(e);
     nomItem = item[0];
     cantidad = e.querySelector('.cantidad').textContent
@@ -258,10 +258,10 @@ function notificaSumaProd(e) {
     if (precioTot > 10000 && counterPromo == 1) {
         accedistePromo();
     }
-};
+}
 
 //Función para remover productos cuando el usuario cliquea en "remover"
-function removerProductoDeLista(e) {
+const removerProductoDeLista = (e) => {
     item = buscaItem(e);
     indice = item[2];
     cantidad = e.querySelector('.cantidad').textContent;
@@ -278,9 +278,9 @@ function removerProductoDeLista(e) {
         cantidadProductosCarro();
     };
     promocion();
-};
+}
 
-function restaCantItem(e) {
+const restaCantItem = (e) => {
     variacionCant(e);
     cantidad = prod.cantidadEl -= 1;
     precioSubtot = prod.precioUnEl * cantidad;
@@ -290,7 +290,7 @@ function restaCantItem(e) {
 }
 
 //Quita "check" al producto
-function checkFueraCarrito(e) {
+const checkFueraCarrito = (e) => {
     item = buscaItem(e);
     coincidencias = item[1]
     if (coincidencias < 1) {
@@ -301,7 +301,7 @@ function checkFueraCarrito(e) {
 }
 
 //Toast notificación producto removido del carrito
-function notificaRemueveProd(e) {
+const notificaRemueveProd = (e) => {
     item = buscaItem(e);
     nomItem = item[0];
     cantidad = e.querySelector('.cantidad').textContent;
@@ -311,10 +311,10 @@ function notificaRemueveProd(e) {
             title: `${nomItem} fuera del carrito`,
             position: 'bottom-end'
         });
-};
+}
 
 //Armo la tabla a partir del array que levanto del local storage
-function armarTabla() {
+const armarTabla = () => {
     let carroLS = localStorage.getItem('carro'); //Llamo al carro desde el local storage
     let carro = JSON.parse(carroLS); //Parseo el string con el array de los productos seleccionados
     for(let i = 0; i < carro.length; i++) {
@@ -326,9 +326,9 @@ function armarTabla() {
                     </tr>`;
         tabla.innerHTML += fila
     };
-};
+}
 
-function addRemoverItemTabla(e) {
+const addRemoverItemTabla = (e) => {
     seleccionCat('Todas'); //Cargo todas las tarjetas, porque desde la tabla tiene que referir a ellas para actualizar sus cantidades
     let prodSel = e.target.parentElement.parentElement; //Obtengo el nombre del producto a partir del click en la línea de la tabla
     let nom = prodSel.querySelector('.nombreProducto').textContent; //Busco la tarjeta con el nombre del producto, así ejecuto el agregar/remover
@@ -344,27 +344,27 @@ function addRemoverItemTabla(e) {
 }
 
 //Precio total del carrito: Sumo el subtotal de los distintos productos entre sí
-function precioProductosCarro() {
+const precioProductosCarro = () => {
     precioTot = arrayCarro.reduce((acc, val) => acc + val.precioSubtotEl, 0);
     sumaProd.innerHTML = ('$' + precioTot); //Display del precio total de los productos en HTML
     sumaProd2.innerHTML = ('$' + precioTot);
 };
 
-function cantidadProductosCarro() {
+const cantidadProductosCarro = () => {
     cantTot = arrayCarro.reduce((acc, val) => acc + val.cantidadEl, 0);
     sumaCant.innerHTML = (cantTot);
     sumaCant2.innerHTML = (cantTot); //Display de cantidad total de productos en HTML
 };
 
 //"Vaciar tabla" lo uso para reiniciar lo que muestra la tabla, sin resetear el local storage (para que no se me multipliquen los items de la tabla indefinidamente)
-function vaciarTabla() {
+const vaciarTabla = () => {
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild);
     };
 };
 
 //Si el usuario quiere borrar toda la compra, incluso del local storage
-function vaciarCarro() {
+const vaciarCarro = () => {
     Swal.fire({
         text: '¿Querés vaciar tu carrito? La compra ya no estará disponible.',
         icon: 'warning',
@@ -401,7 +401,7 @@ function vaciarCarro() {
     });
 };
 
-function promocion() {
+const promocion = () => {
     if (precioTot > 10000 && counterPromo == 0) {
         prodPromo = listaProd.reduce(function(ant, act) { //busco el producto más barato del catálogo
             return ant.precioUn < act.precioUn ? ant : act;
@@ -432,7 +432,7 @@ function promocion() {
     };
 };
 
-function accedistePromo() {
+const accedistePromo = () => {
     Swal.fire({
         title: '¡Felicitaciones!',
         text: '¡Accediste a la promoción! Agregamos un item gratis a tu carrito.',

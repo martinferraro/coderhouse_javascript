@@ -141,34 +141,11 @@
         "imagen": "./img/piel_fps50.png"
     },
     {
-        "nombre":"Protector Solar - Pantalla FPS60 175ml",
+        "nombre":"Protector Solar Pantalla FPS60 175ml",
         "descripcion":"Descripción",
         "categoria":"Protectores solares",
         "precioUn":2100,
         "imagen": "./img/piel_fps60.png"
     }
-],
-
-    "envios": [
-    {
-        "zona": "CABA",
-        "costoEnv": 250
-    },
-    {
-        "zona": "GBA Norte",
-        "costoEnv": 400
-    },
-    {
-        "zona": "GBA Sur",
-        "costoEnv": 600
-    },
-    {
-        "zona": "GBA Oeste",
-        "costoEnv": 500
-    },
-    {
-        "zona": "Resto del país",
-        "costoEnv": 1500
-    }
-]
+    ]
 }

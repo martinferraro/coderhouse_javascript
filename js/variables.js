@@ -32,9 +32,6 @@ const
 
 let
     arrayCarro = [],
-    listaFiltro = {},
-    listaprod = {},
     precioSubtot = 0,
-    envios = {},
     counterPromo = 0,
     intervalID = 0;
