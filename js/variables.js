@@ -1,6 +1,7 @@
 const
     portada = document.getElementById('paginaPortada'),
     shop = document.getElementById('paginaShop'),
+    buscar = document.getElementById('buscar'),
     btnCrema = document.getElementById('btnCrema'),
     btnHome = document.getElementById('btnHome'),
     productos = document.getElementById('producto'),
@@ -17,7 +18,6 @@ const
     sumaProd = document.getElementById('sumaProd'),
     sumaProd2 = document.getElementById('sumaProd2'),
     navMenu = document.getElementById('navMenu'),
-    buscar = document.getElementById('buscar'),
     fragment = document.createDocumentFragment(), //Nodo offscreen para ir cargando las tarjetas
     Toast = Swal.mixin({
         toast: true,

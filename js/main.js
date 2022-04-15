@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     productos.addEventListener('click', addRemover); //Acción cuando hacen click en botón "Agregar" o "Remover" de las tarjetas
     navMenu.addEventListener("click", e => { filtroMenu(e); miCarritoOut(); });
     btnCart.addEventListener('click', miCarritoIn);
-    vuelveCompra.addEventListener('click', e => { filtroMenu(e); miCarritoOut(); });
+    vuelveCompra.addEventListener('click', e => { seleccionCat('Todas'); miCarritoOut(); });
     tabla.addEventListener('click', addRemoverItemTabla); //Acción cuando hacen click en botón "Agregar" o "Remover" del carrito
     vacCarro.addEventListener('click', notificaCarroVacio); //Acción cuando hacen click en botón "Vaciar lista"
-    //buscar.addEventListener('keyup', busqueda);
+    buscar.addEventListener('keyup', busqueda);
 });
 
 window.onload = muestraPortada();
@@ -26,7 +26,6 @@ async function cargarJSON() {
 
 //Mostrar portada, ocultar shop
 function muestraPortada() {
-    sumaCant2.style.visibility = 'hidden';
     shop.style.display = 'none';
     let opacity = 0
     portada.style.opacity = opacity;
@@ -126,15 +125,19 @@ function addRemover(e) {
     armarTabla();
 }
 
-/* //Función de búsqueda
+//Función de búsqueda por texto ingresado
 function busqueda() {
+    listaFiltro = [];
     const input = buscar.value.toUpperCase();
-    console.log(tarjetero);
-
-    const tarjeta = tarjetero.getElementsByClassName('tarjProd');
-    console.log(tarjeta);
-
-} */
+    
+    for(let i = 0; i < listaProd.length; i++) {
+        let nombre = listaProd[i].nombre.toUpperCase();
+        if(nombre.includes(input)) {
+            listaFiltro.push(listaProd[i]);
+            tarjetasEnPantalla();
+        }
+    }
+}
 
 //Filtro productos según selección en menu, y llamo a crear las tarjetas según categoría.
 function seleccionCat(e) {

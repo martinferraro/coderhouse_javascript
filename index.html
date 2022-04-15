@@ -38,7 +38,7 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <h6 id="sumaProd2" class="textoSeparado m-0 me-2 fw-bold"></h6>
-                    <div>
+                    <div class="contCart">
                         <h6 id="sumaCant2" class="numProd d-flex justify-content-center align-items-center m-0 fw-bold"></h6>
                         <i id="btnCart" class="bi bi-cart-fill"></i>
                     </div>
@@ -48,17 +48,19 @@
                     <i id="btnHome" class="bi bi-house-fill"></i>
                 </div>
             </nav>
-            <nav id="navMenu" class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
+            <nav class="nav2 navbar navbar-expand-lg navbar-light px-3 py-2">
                 <div class="p-0">
                     <button class="navbar-toggler bg-light bg-opacity-25 navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <button class="btnMenu btn btn-secondary me-2 ms-0" value="Todas">Todas las categorías</button>
-                        <button class="btnMenu btn btn-secondary me-2" value="Cuidados de la piel">Cuidados de la piel</button>
-                        <button class="btnMenu btn btn-secondary me-2" value="Maquillaje">Maquillaje</button>
-                        <button class="btnMenu btn btn-secondary me-2" value="Cuidados del cabello">Cuidados del cabello</button>
-                        <button class="btnMenu btn btn-secondary" value="Protectores solares">Protectores solares</button>
+                    <div class="collapse navbar-collapse p-0" id="navbarSupportedContent">
+                        <div id="navMenu">
+                            <button class="btnMenu btn btn-secondary me-2 ms-0" value="Todas">Todas las categorías</button>
+                            <button class="btnMenu btn btn-secondary me-2" value="Cuidados de la piel">Cuidados de la piel</button>
+                            <button class="btnMenu btn btn-secondary me-2" value="Maquillaje">Maquillaje</button>
+                            <button class="btnMenu btn btn-secondary me-2" value="Cuidados del cabello">Cuidados del cabello</button>
+                            <button class="btnMenu btn btn-secondary" value="Protectores solares">Protectores solares</button>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -93,7 +95,7 @@
                         </div>
                         <!-- BOTONES CHECKOUT O VACIAR CARRITO -->
                         <div class="d-flex justify-content-center col-12 mt-2">
-                            <button id="btnTabla" class="btnRemover btnMasTam textoSeparado btn btn-secondary align-items-center me-2">Vaciar carrito<i class="bi-trash3 ms-2"></i></button>
+                            <button id="btnTabla" class="btnRemover btnMasTam textoSeparado btn btn-secondary align-items-center me-2">Vaciar<i class="bi-trash3 ms-2"></i></button>
                             <button id="comprar" class="btnCheckout btnMasTam btn btn-secondary align-items-center fw-bold">Comprar<i class="bi bi-cart-check ms-2"></i></button>
                         </div>
                     </div>
