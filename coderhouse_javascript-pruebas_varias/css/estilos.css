@@ -1,0 +1,303 @@
+/* CSS RESET */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* COLORES */
+/* GENERAL */
+h4, h5, h6, p {
+  color: #69447c;
+}
+
+h4, h5, .textoSeparado {
+  letter-spacing: .1rem;
+}
+
+p {
+  font-size: .9rem;
+  letter-spacing: .1rem;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse at bottom, #8d8cd2, transparent), radial-gradient(ellipse at top, #d09ece, transparent);
+}
+
+.nav1 {
+  background-color: #d7c9df;
+  z-index: 1;
+}
+
+.footer {
+  background-color: #d8bbd2;
+  z-index: 1;
+}
+
+.nav2 {
+  background-color: #d8bbd2;
+  padding-top: 68px !important;
+}
+
+.navbar-collapse.collapsing,
+.navbar-collapse.show {
+  padding-top: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.tarjProd, .presupuesto, .swal2-popup.swal2-modal.swal2-show, .swal2-popup.swal2-toast.swal2-show {
+  color: #69447c;
+  border-color: #d8bbd2;
+  background-color: #fafafa;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: .2rem .2rem .2rem #35353548;
+          box-shadow: .2rem .2rem .2rem #35353548;
+}
+
+.contGenProd {
+  padding: 1rem 1rem 0 1rem !important;
+}
+
+.presupuesto {
+  margin-bottom: 1rem;
+}
+
+.numProd {
+  position: absolute;
+  margin-left: 0.9rem !important;
+  font-size: .8rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  margin: 0;
+  background-color: #fafafa;
+  background-blend-mode: luminosity;
+  border-radius: 100%;
+}
+
+.contCart:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  cursor: pointer;
+}
+
+.contImgTarj {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  background: radial-gradient(closest-side, #b37aa7, #f4ecf2);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.contImgTarj:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+}
+
+.contPortada {
+  position: absolute;
+  right: 11rem;
+  top: 5rem;
+  height: 22rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+.imgPortadaLogo {
+  z-index: 1;
+  height: 7rem;
+  width: auto;
+  -webkit-filter: drop-shadow(3px 3px 2px #18181880);
+}
+
+.imgPortadaMod {
+  position: absolute;
+  left: 4rem;
+  bottom: 0;
+  height: 80%;
+  width: auto;
+  -webkit-filter: drop-shadow(5px 5px 15px #ffffff);
+}
+
+.contPortadaCrema {
+  position: relative;
+  height: 4rem;
+  width: 26rem;
+  background-color: #d8bbd2;
+  border-radius: 20rem;
+}
+
+.bloqueColor {
+  width: 30%;
+  height: 100vh;
+  background-color: #d8bbd2;
+}
+
+.imgPortadaCrema {
+  position: absolute;
+  right: 1rem;
+  top: -2rem;
+  height: auto;
+  width: 7rem;
+  -webkit-transform: rotate(-20deg) scale(1.2);
+          transform: rotate(-20deg) scale(1.2);
+  -webkit-filter: drop-shadow(3px 3px 2px #1818184a);
+}
+
+.imgPortadaCrema:hover {
+  -webkit-transform: rotate(-20deg) scale(1.5);
+          transform: rotate(-20deg) scale(1.5);
+  -webkit-transition: -webkit-transform 200ms ease-in-out;
+  transition: -webkit-transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
+  transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.imgTarj {
+  -webkit-filter: drop-shadow(5px 5px 2px #18181880);
+}
+
+.btn {
+  background-color: #69447c;
+  color: white;
+  border: 0 !important;
+  border-radius: 5rem;
+  font-size: .8rem;
+}
+
+.btnMenu:hover, .btnMenu:focus, .btnContCompra:hover, .btnContCompra:focus, .btnCheckout:hover, .btnCheckout:focus, .btnComprar:hover, .btnComprar:focus {
+  cursor: pointer;
+  background-color: #85569d;
+}
+
+.btnMenu, .btnCheckout {
+  letter-spacing: .1rem;
+}
+
+.btnAdd {
+  background-color: #b37aa7;
+  font-size: 1rem;
+  color: white;
+}
+
+.btnAdd:hover, .btnAdd:focus {
+  background-color: #39804b;
+}
+
+.btnRemover {
+  background-color: #949494;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+}
+
+.btnRemoverCarr {
+  font-size: 1rem;
+}
+
+.btnMasTam {
+  font-size: 1rem;
+}
+
+.swal2-confirm.swal2-styled {
+  border: 0 !important;
+  border-radius: 5rem !important;
+  background-color: #949494 !important;
+  text-align: center !important;
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  color: white !important;
+}
+
+.swal2-cancel.swal2-styled {
+  border: 0 !important;
+  border-radius: 5rem !important;
+  background-color: #69447c !important;
+  text-align: center !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  color: white !important;
+}
+
+.nombreProducto, .finCarrito {
+  background-color: #f4ecf2;
+}
+
+.bi-house-fill, .bi-book-fill, .bi-cart-fill {
+  font-size: 1.5rem;
+  color: #69447c;
+  padding: 0;
+}
+
+.bi-house-fill:hover, .bi-book-fill:hover, .bi-cart-fill:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  cursor: pointer;
+}
+
+.bi-dash-circle, .bi-plus-circle {
+  font-size: .8rem;
+}
+
+.bi-check-circle-fill {
+  color: green;
+  font-size: 2rem;
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: .5;
+  -webkit-animation: pop 0.2s linear 1;
+          animation: pop 0.2s linear 1;
+}
+
+@-webkit-keyframes pop {
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes pop {
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+.separador {
+  color: #d8bbd2;
+  font-size: 1.8rem;
+}
+/*# sourceMappingURL=estilos.css.map */
